@@ -23,10 +23,10 @@ function sanitize (html) {
 
 function ConnectDialog () {
   var self = this
-  self.address = ko.observable('')
+  self.address = ko.observable(window.location.hostname)
   self.port = ko.observable('443')
   self.token = ko.observable('')
-  self.username = ko.observable('')
+  self.username = ko.observable('web-'+Math.random().toString(36).substring(7))
   self.password = ko.observable('')
   self.visible = ko.observable(true)
   self.show = self.visible.bind(self.visible, true)
