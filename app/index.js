@@ -53,15 +53,16 @@ function ConnectDialog () {
   self.address = ko.observable('')
   self.port = ko.observable('')
   self.token = ko.observable('')
-  self.username = ko.observable('')
+  self.username = ko.observable('web-' + Math.random().toString(36).substring(7))
   self.password = ko.observable('')
   self.joinOnly = ko.observable(false)
   self.visible = ko.observable(true)
   self.show = self.visible.bind(self.visible, true)
   self.hide = self.visible.bind(self.visible, false)
+  self.channel = ko.observable('')
   self.connect = function () {
     self.hide()
-    ui.connect(self.username(), self.address(), self.port(), self.token(), self.password())
+    ui.connect(self.username(), self.address(), self.port(), self.token(), self.password(), self.channel())
   }
 }
 
@@ -331,7 +332,7 @@ class GlobalBindings {
       return '[' + new Date().toLocaleTimeString('en-US') + ']'
     }
 
-    this.connect = (username, host, port, token, password) => {
+    this.connect = (username, host, port, token, password, initialChannelName) => {
       this.resetClient()
 
       this.remoteHost(host)
@@ -350,6 +351,8 @@ class GlobalBindings {
       }).done(client => {
         log('Connected!')
 
+        var initialChannel = undefined
+
         this.client = client
         // Prepare for connection errors
         client.on('error', (err) => {
@@ -363,6 +366,9 @@ class GlobalBindings {
         // Register all channels, recursively
         const registerChannel = channel => {
           this._newChannel(channel)
+          if (channel.name == initialChannelName) {
+            initialChannel = channel
+          }
           channel.children.forEach(registerChannel)
         }
         registerChannel(client.root)
@@ -401,6 +407,14 @@ class GlobalBindings {
 
         // Startup audio input processing
         this._updateVoiceHandler()
+
+        // move to initial channel
+        log("initialChannel = " + initialChannel)
+        if (initialChannel) {
+          log("this.user = " + this.user)
+          this.thisUser().model.setChannel(initialChannel)
+        }
+
         // Tell server our mute/deaf state (if necessary)
         if (this.selfDeaf()) {
           this.client.setSelfDeaf(true)
@@ -892,6 +906,9 @@ window.onload = function () {
   }
   if (queryParams.token) {
     ui.connectDialog.token(queryParams.token)
+  }
+  if (queryParams.channel) {
+    ui.connectDialog.channel(queryParams.channel)
   }
   if (queryParams.username) {
     ui.connectDialog.username(queryParams.username)

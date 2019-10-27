@@ -25,7 +25,7 @@
     </div>
     <div id="container" style="display: none" data-bind="visible: true,
                                                          css: { minimal: minimalView }">
-      <!-- ko with: connectDialog --> 
+      <!-- ko with: connectDialog -->
       <div class="connect-dialog dialog" data-bind="visible: visible() && !joinOnly()">
           <div class="dialog-header">
             Connect to Server
@@ -51,6 +51,10 @@
                 <tr data-bind="if: $root.config.connectDialog.password">
                   <td>Password</td>
                   <td><input id="password" type="password" data-bind="value: password"></td>
+                </tr>
+                <tr data-bind="if: $root.config.connectDialog.channel">
+                  <td>Channel</td>
+                  <td><input id="channel" type="text" data-bind="value: channel" required></td>
                 </tr>
             </table>
             <div class="dialog-footer">
@@ -477,7 +481,7 @@
       </div>
       <script type="text/html" id="channel">
         <div class="channel" data-bind="
-            click: $root.select, 
+            click: $root.select,
             event: {
               contextmenu: openContextMenu,
               dblclick: $root.requestMove.bind($root, $root.thisUser())
@@ -526,7 +530,7 @@
                   alt="server mute" src="/svg/muted_server.svg">
               <img class="user-suppress-mute" data-bind="visible: suppress"
                   alt="suppressed" src="/svg/muted_suppressed.svg">
-              <img class="user-self-mute" data-bind="visible: selfMute" 
+              <img class="user-self-mute" data-bind="visible: selfMute"
                   alt="self mute" src="/svg/muted_self.svg">
               <img class="user-server-deaf" data-bind="visible: deaf"
                   alt="server deaf" src="/svg/deafened_server.svg">
@@ -576,6 +580,12 @@
         <!-- /ko -->
         <!-- /ko -->
       </script>
+      <div class="c3lingo">
+        <div class="c3lingo-content">
+        <h1>c3lingo</h1>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
       <div class="channel-root-container" data-bind="if: root, visible: !minimalView()">
         <div class="channel-root" data-bind="template: {name: 'channel', data: root}"></div>
       </div>

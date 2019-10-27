@@ -9,7 +9,8 @@ window.mumbleWebConfig = {
     'port': true,
     'token': true,
     'username': true,
-    'password': true
+    'password': true,
+    'channel': true
   },
   // Default values for user settings
   // You can see your current value by typing `localStorage.getItem('mumble.$setting')` in the web console.
@@ -36,5 +37,6 @@ window.mumbleWebConfig = {
     'avatarurl': '', // download and set the user's Mumble avatar to the image at this URL
     // General
     'theme': 'MetroMumbleLight'
-  }
+  },
+  'defaultChannel': ''
 }

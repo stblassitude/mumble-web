@@ -6,7 +6,8 @@ var themes = {
   'MetroMumbleLight': 'MetroMumbleLight',
   'MetroMumbleDark': 'MetroMumbleDark',
   'light': 'MetroMumbleLight',
-  'dark': 'MetroMumbleDark'
+  'dark': 'MetroMumbleDark',
+  'C3Lingo': 'C3Lingo'
 }
 theme = themes[theme] || window.mumbleWebConfig.defaults.theme
 window.theme = theme
@@ -19,6 +20,10 @@ var [loadingTheme, mainTheme] = {
   'MetroMumbleDark': [
     require('../themes/MetroMumbleDark/loading.scss'),
     require('../themes/MetroMumbleDark/main.scss')
+  ],
+  'C3Lingo': [
+    require('../themes/C3Lingo/loading.scss'),
+    require('../themes/C3Lingo/main.scss')
   ]
 }[theme]
 
