@@ -6,4 +6,4 @@ let config = window.mumbleWebConfig // eslint-disable-line no-unused-vars
 
 // E.g. changing default address and theme:
 // config.defaults.address = 'voice.example.com'
-// config.defaults.theme = 'MetroMumbleDark'
+config.defaults.theme = 'C3Lingo'

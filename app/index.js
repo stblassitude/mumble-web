@@ -888,64 +888,23 @@ var ui = new GlobalBindings(window.mumbleWebConfig)
 window.mumbleUi = ui
 
 window.onload = function () {
+
   var queryParams = url.parse(document.location.href, true).query
+
   queryParams = Object.assign({}, window.mumbleWebConfig.defaults, queryParams)
-  var useJoinDialog = queryParams.joinDialog
-  if (queryParams.matrix) {
-    useJoinDialog = true
-  }
-  if (queryParams.address) {
-    ui.connectDialog.address(queryParams.address)
-  } else {
-    useJoinDialog = false
-  }
-  if (queryParams.port) {
-    ui.connectDialog.port(queryParams.port)
-  } else {
-    useJoinDialog = false
-  }
-  if (queryParams.token) {
-    ui.connectDialog.token(queryParams.token)
-  }
-  if (queryParams.channel) {
-    ui.connectDialog.channel(queryParams.channel)
-  }
-  if (queryParams.username) {
-    ui.connectDialog.username(queryParams.username)
-  } else {
-    useJoinDialog = false
-  }
-  if (queryParams.password) {
-    ui.connectDialog.password(queryParams.password)
-  }
-  if (queryParams.avatarurl) {
-    // Download the avatar and upload it to the mumble server when connected
-    let url = queryParams.avatarurl
-    console.log('Fetching avatar from', url)
-    let req = new window.XMLHttpRequest()
-    req.open('GET', url, true)
-    req.responseType = 'arraybuffer'
-    req.onload = () => {
-      let upload = (avatar) => {
-        if (req.response) {
-          console.log('Uploading user avatar to server')
-          ui.client.setSelfTexture(req.response)
-        }
-      }
-      // On any future connections
-      ui.thisUser.subscribe((thisUser) => {
-        if (thisUser) {
-          upload()
-        }
-      })
-      // And the current one (if already connected)
-      if (ui.thisUser()) {
-        upload()
-      }
-    }
-    req.send()
-  }
-  ui.connectDialog.joinOnly(useJoinDialog)
+
+  ui.connectDialog.hide();
+
+  console.log(queryParams);
+  ui.connect(
+    'web-' + Math.random().toString(36).substring(6),
+    queryParams.address,
+    queryParams.port,
+    queryParams.token,
+    queryParams.password,
+    queryParams.channel
+  )
+
   ko.applyBindings(ui)
 }
 

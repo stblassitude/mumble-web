@@ -6,7 +6,8 @@ module.exports = {
   entry: {
     index: [
       './app/index.js',
-      './app/index.html'
+      './app/index.html',
+      './app/landing.html'
     ],
     config: './app/config.js',
     theme: './app/theme.js',
