@@ -360,9 +360,6 @@ class GlobalBindings {
           this.resetClient()
         })
 
-        // Make sure we stay open if we're running as Matrix widget
-        window.matrixWidget.setAlwaysOnScreen(true)
-
         // Register all channels, recursively
         const registerChannel = channel => {
           this._newChannel(channel)

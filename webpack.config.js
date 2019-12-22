@@ -10,8 +10,7 @@ module.exports = {
       './app/landing.html'
     ],
     config: './app/config.js',
-    theme: './app/theme.js',
-    matrix: './app/matrix.js'
+    theme: './app/theme.js'
   },
   output: {
     filename: '[name].js',
