@@ -10,8 +10,6 @@ import ko from 'knockout'
 import _dompurify from 'dompurify'
 import keyboardjs from 'keyboardjs'
 
-import { ContinuousVoiceHandler, PushToTalkVoiceHandler, VADVoiceHandler, initVoice } from './voice'
-
 const dompurify = _dompurify(window)
 
 function sanitize (html) {
@@ -141,7 +139,6 @@ function CommentDialog () {
 
 class SettingsDialog {
   constructor (settings) {
-    this.voiceMode = ko.observable(settings.voiceMode)
     this.pttKey = ko.observable(settings.pttKey)
     this.pttKeyDisplay = ko.observable(settings.pttKey)
     this.vadLevel = ko.observable(settings.vadLevel)
@@ -165,32 +162,13 @@ class SettingsDialog {
     this.vadLevel.subscribe(() => this._setupTestVad())
   }
 
-  _setupTestVad () {
-    if (this._testVad) {
-      this._testVad.end()
-    }
-    let dummySettings = new Settings({})
-    this.applyTo(dummySettings)
-    this._testVad = new VADVoiceHandler(null, dummySettings)
-    this._testVad.on('started_talking', () => this.testVadActive(true))
-                 .on('stopped_talking', () => this.testVadActive(false))
-                 .on('level', level => this.testVadLevel(level))
-    testVoiceHandler = this._testVad
-  }
-
   applyTo (settings) {
-    settings.voiceMode = this.voiceMode()
     settings.pttKey = this.pttKey()
     settings.vadLevel = this.vadLevel()
     settings.showAvatars(this.showAvatars())
     settings.userCountInChannelName(this.userCountInChannelName())
     settings.audioBitrate = this.audioBitrate()
     settings.samplesPerPacket = this.samplesPerPacket()
-  }
-
-  end () {
-    this._testVad.end()
-    testVoiceHandler = null
   }
 
   recordPttKey () {
@@ -241,7 +219,6 @@ class SettingsDialog {
 class Settings {
   constructor (defaults) {
     const load = key => window.localStorage.getItem('mumble.' + key)
-    this.voiceMode = load('voiceMode') || defaults.voiceMode
     this.pttKey = load('pttKey') || defaults.pttKey
     this.vadLevel = load('vadLevel') || defaults.vadLevel
     this.toolbarVertical = load('toolbarVertical') || defaults.toolbarVertical
@@ -253,7 +230,6 @@ class Settings {
 
   save () {
     const save = (key, val) => window.localStorage.setItem('mumble.' + key, val)
-    save('voiceMode', this.voiceMode)
     save('pttKey', this.pttKey)
     save('vadLevel', this.vadLevel)
     save('toolbarVertical', this.toolbarVertical)
@@ -290,12 +266,6 @@ class GlobalBindings {
     this.selfMute = ko.observable()
     this.selfDeaf = ko.observable()
 
-    this.selfMute.subscribe(mute => {
-      if (voiceHandler) {
-        voiceHandler.setMute(mute)
-      }
-    })
-
     this.toggleToolbarOrientation = () => {
       this.toolbarHorizontal(!this.toolbarHorizontal())
       this.settings.toolbarVertical = !this.toolbarHorizontal()
@@ -314,8 +284,6 @@ class GlobalBindings {
       const settingsDialog = this.settingsDialog()
 
       settingsDialog.applyTo(this.settings)
-
-      this._updateVoiceHandler()
 
       this.settings.save()
       this.closeSettings()
@@ -401,9 +369,6 @@ class GlobalBindings {
             message: sanitize(client.welcomeMessage)
           })
         }
-
-        // Startup audio input processing
-        this._updateVoiceHandler()
 
         // move to initial channel
         log("initialChannel = " + initialChannel)
@@ -680,45 +645,6 @@ class GlobalBindings {
 
     this.connected = () => this.thisUser() != null
 
-    this._updateVoiceHandler = () => {
-      if (!this.client) {
-        return
-      }
-      if (voiceHandler) {
-        voiceHandler.end()
-        voiceHandler = null
-      }
-      let mode = this.settings.voiceMode
-      if (mode === 'cont') {
-        voiceHandler = new ContinuousVoiceHandler(this.client, this.settings)
-      } else if (mode === 'ptt') {
-        voiceHandler = new PushToTalkVoiceHandler(this.client, this.settings)
-      } else if (mode === 'vad') {
-        voiceHandler = new VADVoiceHandler(this.client, this.settings)
-      } else {
-        log('Unknown voice mode:', mode)
-        return
-      }
-      voiceHandler.on('started_talking', () => {
-        if (this.thisUser()) {
-          this.thisUser().talking('on')
-        }
-      })
-      voiceHandler.on('stopped_talking', () => {
-        if (this.thisUser()) {
-          this.thisUser().talking('off')
-        }
-      })
-      if (this.selfMute()) {
-        voiceHandler.setMute(true)
-      }
-
-      this.client.setAudioQuality(
-        this.settings.audioBitrate,
-        this.settings.samplesPerPacket
-      )
-    }
-
     this.messageBoxHint = ko.pureComputed(() => {
       if (!this.thisUser()) {
         return '' // Not yet connected
@@ -967,22 +893,3 @@ function userToState () {
   }
   return flags.join(', ')
 }
-
-var voiceHandler
-var testVoiceHandler
-
-initVoice(data => {
-  if (testVoiceHandler) {
-    testVoiceHandler.write(data)
-  }
-  if (!ui.client) {
-    if (voiceHandler) {
-      voiceHandler.end()
-    }
-    voiceHandler = null
-  } else if (voiceHandler) {
-    voiceHandler.write(data)
-  }
-}, err => {
-  log('Cannot initialize user media. Microphone will not work:', err)
-})
