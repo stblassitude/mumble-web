@@ -21,25 +21,10 @@ $channel-selected-bg-color: $lightblue !default
   font-weight: bold;
 }
 
-.chat {
-  display: none;
-}
-
-.toolbar {
-  display: none;
-}
-
-.branch, .user-wrapper {
-  display: none;
-}
-
 .c3lingo {
-  margin-right: 2px;
-  float: left;
-  margin-top: 1%;
-  margin-left: 2px;
-  width: calc(39% - 36px);
-  height: calc(98% - 4px);
+  margin: auto;
+  width: 96%;
+  height: 96%;
 }
 
 .c3lingo-content {
