@@ -24,62 +24,19 @@
     </div>
     <div id="container" style="display: none" data-bind="visible: true">
 
-      <!-- ko with: connectionInfo -->
-      <div class="connection-info-dialog dialog" data-bind="visible: visible">
-        <div class="dialog-header">
-          Connection Information
-        </div>
-        <div class="dialog-content">
-          <h3>Version</h3>
-          <!-- ko with: serverVersion -->
-          Protocol
-          <span data-bind="text: major + '.' + minor + '.' + patch"></span>.
-          <br>
-          <br>
-          <span data-bind="text: release"></span>
-          <br>
-          <span data-bind="text: os"></span>
-          <span data-bind="text: osVersion"></span>
-          <br>
-          <!-- /ko -->
-          <!-- ko if: !serverVersion() -->
-          Unknown
-          <!-- /ko -->
-
-          <h3>Control channel</h3>
-          <span data-bind="text: latencyMs().toFixed(2)"></span> ms average latency
-          (<span data-bind="text: latencyDeviation().toFixed(2)"></span> deviation)
-          <br>
-          <br>
-          Remote host <span data-bind="text: remoteHost"></span>
-          (port <span data-bind="text: remotePort"></span>)
-          <br>
-
-          <h3>Audio bandwidth</h3>
-          Maximum <span data-bind="text: (maxBitrate()/1000).toFixed(1)"></span> kbits/s
-          (<span data-bind="text: (maxBandwidth()/1000).toFixed(1)"></span> kbits/s with overhead)
-          <br>
-          Current <span data-bind="text: (currentBitrate()/1000).toFixed(1)"></span> kbits/s
-          (<span data-bind="text: (currentBandwidth()/1000).toFixed(1)"></span> kbits/s with overhead)
-          <br>
-          Codec: <span data-bind="text: codec"></span>
-        </div>
-        <div class="dialog-footer">
-          <input class="dialog-close" type="button" data-bind="click: hide" value="OK">
-        </div>
-      </div>
-      <!-- /ko -->
-
       </script>
       <div class="c3lingo">
         <div class="c3lingo-content">
-        <h1>c3lingo</h1>
+
+          <h1>c3lingo</h1>
 
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
           <button id="resumeStreamButton">Start/Resume stream</button>
           <button id="pauseStreamButton">Pause stream</button>
-          <!-- TODO: Connection Info -->
+          <button id="statsButton">Show/hide stats</button>
+          <div id="stats">
+          </div>
 
         </div>
       </div>

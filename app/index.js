@@ -18,63 +18,12 @@ function sanitize (html) {
   })
 }
 
-// GUI
-
-class ConnectionInfo {
-  constructor (ui) {
-    this._ui = ui
-    this.visible = ko.observable(false)
-    this.serverVersion = ko.observable()
-    this.latencyMs = ko.observable(NaN)
-    this.latencyDeviation = ko.observable(NaN)
-    this.remoteHost = ko.observable()
-    this.remotePort = ko.observable()
-    this.maxBitrate = ko.observable(NaN)
-    this.currentBitrate = ko.observable(NaN)
-    this.maxBandwidth = ko.observable(NaN)
-    this.currentBandwidth = ko.observable(NaN)
-    this.codec = ko.observable()
-
-    this.show = () => {
-      if (!ui.thisUser()) return
-      this.update()
-      this.visible(true)
-    }
-    this.hide = () => this.visible(false)
-  }
-
-  update () {
-    let client = this._ui.client
-
-    this.serverVersion(client.serverVersion)
-
-    let dataStats = client.dataStats
-    if (dataStats) {
-      this.latencyMs(dataStats.mean)
-      this.latencyDeviation(Math.sqrt(dataStats.variance))
-    }
-    this.remoteHost(this._ui.remoteHost())
-    this.remotePort(this._ui.remotePort())
-
-    let spp = this._ui.settings.samplesPerPacket
-    let maxBitrate = client.getMaxBitrate(spp, false)
-    let maxBandwidth = client.maxBandwidth
-    let actualBitrate = client.getActualBitrate(spp, false)
-    let actualBandwidth = MumbleClient.calcEnforcableBandwidth(actualBitrate, spp, false)
-    this.maxBitrate(maxBitrate)
-    this.currentBitrate(actualBitrate)
-    this.maxBandwidth(maxBandwidth)
-    this.currentBandwidth(actualBandwidth)
-    this.codec('Opus') // only one supported for sending
-  }
-}
-
 class GlobalBindings {
   constructor (config) {
     this.config = config
     this.connector = new WorkerBasedMumbleConnector()
-    this.connectionInfo = new ConnectionInfo(this)
     this.client = null
+    this.socketURL = 'wss://<unset>'
 
     this.connect = (username, host, port, token, password, initialChannelName) => {
       this.resetClient()
@@ -85,8 +34,10 @@ class GlobalBindings {
       // the page in some way (which at this point they have), see: https://goo.gl/7K7WLu
       this.connector.setSampleRate(audioContext().sampleRate)
 
+      this.socketURL = `wss://${host}:${port}`
+
       // TODO: token
-      this.connector.connect(`wss://${host}:${port}`, {
+      this.connector.connect(this.socketURL, {
         username: username,
         password: password
       }).done(client => {
@@ -203,7 +154,8 @@ window.mumbleUi = ui
 var queryParams = null
 
 function resumeStream () {
-  console.log("Connecting...");
+
+  console.log("Connecting...")
   ui.connect(
     'web-' + Math.random().toString(36).substring(6),
     queryParams.address,
@@ -211,12 +163,78 @@ function resumeStream () {
     queryParams.token,
     queryParams.password,
     queryParams.channel
-  );
+  )
+
 }
 
 function pauseStream () {
-  console.log("Disconnecting.");
-  ui.resetClient();
+
+  console.log("Disconnecting.")
+  ui.resetClient()
+
+}
+
+var showStats = false
+var statTimer
+
+function updateStats (statEl) {
+
+  var c = ui.client,
+      sv = c.serverVersion
+
+  var latency = c.dataStats ? c.dataStats.mean.toFixed(2) : '--',
+      latencyDev = c.dataStats ? Math.sqrt(c.dataStats.variance.toFixed(2)) : '--'
+
+  var codec = 'Opus',
+      spp = window.mumbleWebConfig.settings.samplesPerPacket
+
+  var brm = (c.getMaxBitrate(spp, false)/1000).toFixed(1),
+      bwm = (c.maxBandwidth/1000).toFixed(1),
+      brc = (c.getActualBitrate(spp, false)/1000).toFixed(1),
+      bwc = (MumbleClient.calcEnforcableBandwidth(brc, spp, false)/1000).toFixed(1)
+
+  var text = `
+    <h4>Server</h4>
+    <p>
+      Mumble Version: ${sv.major}.${sv.minor}.${sv.patch} Rev ${sv.release} <br>
+      OS: ${sv.os} ${sv.osVersion}
+    </p>
+    <h4>Control</h4>
+    <p>
+      Average latency: ${latency} ms <br>
+      Latency deviation: ${latencyDev}<br>
+      WebSocket URL: ${ui.socketURL}
+    </p>
+    <h4>Audio</h4>
+    <p>
+      Codec: ${codec} <br>
+      Samples per Packet: ${spp} <br>
+      Maximum Bandwidth: ${brm} kbit/s (${bwm} with overhead) <br>
+      Current Bandwidth: ${brc} kbit/s (${bwc} with overhead) <br>
+    </p>
+  `
+
+  statEl.innerHTML = text
+
+}
+
+function toggleStats () {
+
+  var statEl = document.getElementById('stats')
+
+  showStats = !showStats
+
+  if (showStats) {
+
+    statTimer = setInterval(updateStats, 1000, statEl)
+
+  } else {
+
+    clearInterval(statTimer)
+    statEl.innerHTML = ''
+
+  }
+
 }
 
 window.onload = function () {
@@ -229,6 +247,7 @@ window.onload = function () {
 
   document.getElementById('resumeStreamButton').addEventListener('click', resumeStream, false)
   document.getElementById('pauseStreamButton').addEventListener('click', pauseStream, false)
+  document.getElementById('statsButton').addEventListener('click', toggleStats, false)
 
   ko.applyBindings(ui)
 
