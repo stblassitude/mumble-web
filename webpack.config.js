@@ -3,7 +3,7 @@ module.exports = {
     index: [
       './app/index.js',
       './app/index.html',
-      './app/landing.html'
+      './app/stream.html'
     ],
     config: './app/config.js'
   },
