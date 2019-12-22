@@ -810,26 +810,10 @@ var ui = new GlobalBindings(window.mumbleWebConfig)
 // Used only for debugging
 window.mumbleUi = ui
 
+var queryParams = null
+
 function resumeStream () {
   console.log("Resuming Audio Context");
-  audioContext().resume();
-}
-
-function pauseStream () {
-  console.log("Suspending Audio Context");
-  audioContext().suspend();
-}
-
-window.onload = function () {
-
-  var queryParams = url.parse(document.location.href, true).query
-
-  queryParams = Object.assign({}, window.mumbleWebConfig.defaults, queryParams)
-
-  ui.connectDialog.hide();
-
-  console.log(queryParams);
-
   ui.connect(
     'web-' + Math.random().toString(36).substring(6),
     queryParams.address,
@@ -838,6 +822,22 @@ window.onload = function () {
     queryParams.password,
     queryParams.channel
   )
+}
+
+function pauseStream () {
+  console.log("Suspending Audio Context");
+  ui.client.disconnect()
+}
+
+window.onload = function () {
+
+  queryParams = url.parse(document.location.href, true).query
+
+  queryParams = Object.assign({}, window.mumbleWebConfig.defaults, queryParams)
+
+  ui.connectDialog.hide();
+
+  console.log(queryParams);
 
   document.getElementById('resumeStreamButton').addEventListener('click', resumeStream, false);
   document.getElementById('pauseStreamButton').addEventListener('click', pauseStream, false);
