@@ -1,7 +1,3 @@
-var theme = 'MetroMumbleLight'
-
-var path = require('path')
-
 module.exports = {
   entry: {
     index: [
@@ -9,8 +5,7 @@ module.exports = {
       './app/index.html',
       './app/landing.html'
     ],
-    config: './app/config.js',
-    theme: './app/theme.js'
+    config: './app/config.js'
   },
   output: {
     filename: '[name].js',
@@ -40,8 +35,7 @@ module.exports = {
           'extract-loader',
           'html-loader?' + JSON.stringify({
             attrs: ['img:src', 'link:href'],
-            interpolate: 'require',
-            root: theme
+            interpolate: 'require'
           })
         ]
       },
@@ -91,10 +85,7 @@ module.exports = {
   resolve: {
     alias: {
       webworkify: 'webworkify-webpack'
-    },
-    root: [
-      path.resolve('./themes/')
-    ]
+    }
   },
   includes: {
     pattern: function (filepath) {

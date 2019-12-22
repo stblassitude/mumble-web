@@ -6,17 +6,6 @@ import MumbleClient from 'mumble-client'
 import WorkerBasedMumbleConnector from './worker-client'
 import BufferQueueNode from 'web-audio-buffer-queue'
 import audioContext from 'audio-context'
-import ko from 'knockout'
-import _dompurify from 'dompurify'
-import keyboardjs from 'keyboardjs'
-
-const dompurify = _dompurify(window)
-
-function sanitize (html) {
-  return dompurify.sanitize(html, {
-    ALLOWED_TAGS: ['br', 'b', 'i', 'u', 'a', 'span', 'p']
-  })
-}
 
 class GlobalBindings {
   constructor (config) {
@@ -248,7 +237,5 @@ window.onload = function () {
   document.getElementById('resumeStreamButton').addEventListener('click', resumeStream, false)
   document.getElementById('pauseStreamButton').addEventListener('click', pauseStream, false)
   document.getElementById('statsButton').addEventListener('click', toggleStats, false)
-
-  ko.applyBindings(ui)
 
 }
