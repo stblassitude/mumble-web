@@ -1,4 +1,7 @@
+var path = require('path');
+
 module.exports = {
+  mode: 'development',
   entry: {
     index: [
       './app/index.js',
@@ -8,29 +11,25 @@ module.exports = {
     config: './app/config.js'
   },
   output: {
-    filename: '[name].js',
-    path: './dist'
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js'
   },
   module: {
-    postLoaders: [
-      {
-        include: /mumble-streams\/lib\/data.js/,
-        loader: 'transform-loader?brfs'
-      }
-    ],
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015'],
-          plugins: ['transform-runtime']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime']
+          }
         }
       },
       {
         test: /\.html$/,
-        loaders: [
+        use: [
           'file-loader?name=[name].[ext]',
           'extract-loader',
           'html-loader?' + JSON.stringify({
@@ -41,24 +40,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
+        use: [
           'file-loader',
           'extract-loader',
           'css-loader'
         ]
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          'file-loader?name=[hash].css',
-          'extract-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-      },
-      {
         test: /manifest\.json$|\.xml$/,
-        loaders: [
+        use: [
           'file-loader',
           'extract-loader',
           'regexp-replace-loader?' + JSON.stringify({
@@ -72,13 +62,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.json$/,
-        exclude: /manifest\.json$/,
-        loader: 'json-loader'
+        test: /\.(svg|png|ico)$/,
+        use: [
+          'file-loader'
+        ]
       },
       {
-        test: /\.(svg|png|ico)$/,
-        loader: 'file-loader'
+        enforce: 'post',
+        test: /mumble-streams\/lib\/data.js/,
+        use: [
+          'transform-loader?brfs'
+        ]
       }
     ]
   },
@@ -87,12 +81,5 @@ module.exports = {
       webworkify: 'webworkify-webpack'
     }
   },
-  includes: {
-    pattern: function (filepath) {
-      return {
-        re: /#require\((.+)\)/,
-        index: 1
-      }
-    }
-  }
+  target: 'web'
 }
