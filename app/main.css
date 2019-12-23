@@ -35,9 +35,7 @@ header img {
 
 #halls > div {
 
-  background: #666;
-  border: 1px solid #222;
-  border-radius: 4px;
+  background: #555;
 
   width: 12em;
   margin: 1em;
@@ -67,7 +65,7 @@ ul li {
 
   width: 100%;
   list-style: none;
-  border-top: 1px solid #222;
+  border-top: 2px solid #444;
   padding: .5em 0;
 
   text-align: center;
@@ -82,13 +80,18 @@ a {
 }
 
 a:hover li {
-  background: #777;
+  background: #666;
 }
 
 #controls, #stats {
 
+  margin: 1em 0;
   padding: 1em 0;
 
+}
+
+#stats {
+  background: #555;
 }
 
 #controls a {

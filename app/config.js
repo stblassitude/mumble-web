@@ -27,8 +27,8 @@ window.mumbleWebConfig = {
   // Default values (can be changed by passing a query parameter of the same name)
   'defaults': {
     // Connect Dialog
-    'address': window.location.hostname,
-    'port': '443',
+    'address': 'c3lingo.winkels.berlin',
+    'port': '64737',
     'token': '',
     'username': '',
     'password': '',
