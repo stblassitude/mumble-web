@@ -54,6 +54,9 @@ class GlobalBindings {
         // Register all users
         client.users.forEach(user => this._newUser(user))
 
+        // Register future users in case the sender drops out
+        client.on('newUser', user => this._newUser(user))
+
         // move to initial channel
         if (initialChannel) {
           client.self.setChannel(initialChannel)
@@ -61,6 +64,10 @@ class GlobalBindings {
 
         // Tell server this device is muted
         this.client.setSelfMute(true)
+
+        document.getElementById('loading').style.display = 'none'
+        document.getElementById('pauseButton').style.display = 'block'
+        document.getElementById('statsButton').style.display = 'inline-block'
 
       }, err => {
 
@@ -156,10 +163,6 @@ function playStream () {
     queryParams.password,
     queryParams.channel
   )
-
-  document.getElementById('loading').style.display = 'none'
-  document.getElementById('pauseButton').style.display = 'block'
-  document.getElementById('statsButton').style.display = 'inline-block'
 
 }
 
