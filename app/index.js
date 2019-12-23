@@ -25,6 +25,8 @@ class GlobalBindings {
 
       this.socketURL = `wss://${host}:${port}`
 
+      document.querySelector('#loading b').innerHTML = '[ (42%): Breaking down language barriers... ]'
+
       // TODO: token
       this.connector.connect(this.socketURL, {
         username: username,
@@ -32,6 +34,7 @@ class GlobalBindings {
       }).done(client => {
 
         console.log('Connected!')
+        document.querySelector('#loading b').innerHTML = '[ (69%): Cracking enigma... ]'
 
         this.client = client
         // Prepare for connection errors
@@ -64,6 +67,8 @@ class GlobalBindings {
 
         // Tell server this device is muted
         this.client.setSelfMute(true)
+
+        document.querySelector('#loading b').innerHTML = '[ (92%): Spreading compassion... ]'
 
         document.getElementById('loading').style.display = 'none'
         document.getElementById('pauseButton').style.display = 'block'
@@ -154,6 +159,8 @@ function playStream () {
   document.getElementById('playButton').style.display = 'none'
   document.getElementById('loading').style.display = 'block'
 
+  document.querySelector('#loading b').innerHTML = '[ (16%): Translating rosetta stone... ]'
+
   console.log("Connecting...")
   ui.connect(
     'web-' + Math.random().toString(36).substring(6),
@@ -171,8 +178,9 @@ function pauseStream () {
   document.getElementById('pauseButton').style.display = 'none'
   document.getElementById('playButton').style.display = 'block'
   document.getElementById('statsButton').style.display = 'none'
-  document.getElementById('stats').style.display = 'none'
-  showStats = false
+
+  if (showStats)
+    toggleStats()
 
   console.log("Disconnecting.")
   ui.resetClient()
