@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <title>c3lingo Live Translation | Stream</title>
     <meta charset="utf-8">
     <meta name="theme-color" content="#444">
-
     <link rel="stylesheet" type="text/css" href="main.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div id="container">
 
-      <h1>c3lingo</h1>
+    <header>
 
-      <button id="resumeStreamButton">Start/Resume stream</button>
-      <button id="pauseStreamButton">Pause stream</button>
-      <button id="statsButton">Show/hide stats</button>
-      <div id="stats"></div>
+      <a href="index.html">
+        <img src="img/c3lingo.svg" alt="c3lingo">
+      </a>
+
+    </header>
+
+    <div id="greeter">
+
+      <noscript>
+        <h1>Your device seems to have JavaScript disabled</h1>
+        <h2>This makes us sad because we can't deliver our translations :(</h2>
+      </noscript>
+
+      <h1></h1>
+      <h2></h2>
 
     </div>
+
+    <div id="controls">
+
+      <a id="playButton">
+        <img src="img/play.svg" alt="play">
+        <h3>Press to start listening</h3>
+      </a>
+      <a id="pauseButton" style="display: none">
+        <img src="img/pause.svg" alt="pause"><br>
+        <h3>Press to pause stream</h3>
+      </a>
+      <a id="loading" style="display: none">
+        <img src="img/loading.svg" alt="loading"><br>
+        <h3>Connecting to server</h3>
+      </a>
+
+    </div>
+
+    <a id="statsButton" style="display: none">Show/hide stats</a>
+    <div id="stats" style="display: none"></div>
+
   </body>
   <script src="config.js"></script>
   <script src="index.js"></script>

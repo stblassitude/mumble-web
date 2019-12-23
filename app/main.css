@@ -3,5 +3,114 @@ html, body {
   margin: 0;
   padding: 0;
   background: #444;
+  font-family: sans-serif;
+  color: #ccc;
+  box-sizing: border-box;
+  text-align: center;
 
+}
+
+header {
+  padding: 1em;
+}
+
+header img {
+  height: 8em;
+  max-width: 90%;
+  margin: 2em 0 1em;
+}
+
+#greeter {
+  padding: 1em;
+  text-align: center;
+  background: #555;
+}
+
+#halls {
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#halls > div {
+
+  background: #666;
+  border: 1px solid #222;
+  border-radius: 4px;
+
+  width: 12em;
+  margin: 1em;
+
+  overflow: hidden;
+
+  text-align: center;
+
+}
+
+#halls img {
+
+  height: 8em;
+  margin: 1em 0;
+
+}
+
+ul {
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+}
+
+ul li {
+
+  width: 100%;
+  list-style: none;
+  border-top: 1px solid #222;
+  padding: .5em 0;
+
+  text-align: center;
+
+}
+
+a {
+
+  text-decoration: none;
+  color: inherit;
+
+}
+
+a:hover li {
+  background: #777;
+}
+
+#controls, #stats {
+
+  padding: 1em 0;
+
+}
+
+#controls a {
+
+  display: block;
+  cursor: pointer;
+
+}
+
+#controls img {
+
+  display: block;
+
+  height:10em;
+  max-width: 42%;
+
+  margin: 1em auto;
+
+}
+
+#statsButton {
+  padding: .4em;
+  background: #555;
+  cursor: pointer;
 }

@@ -142,7 +142,10 @@ window.mumbleUi = ui
 
 var queryParams = null
 
-function resumeStream () {
+function playStream () {
+
+  document.getElementById('playButton').style.display = 'none'
+  document.getElementById('loading').style.display = 'block'
 
   console.log("Connecting...")
   ui.connect(
@@ -154,9 +157,19 @@ function resumeStream () {
     queryParams.channel
   )
 
+  document.getElementById('loading').style.display = 'none'
+  document.getElementById('pauseButton').style.display = 'block'
+  document.getElementById('statsButton').style.display = 'inline-block'
+
 }
 
 function pauseStream () {
+
+  document.getElementById('pauseButton').style.display = 'none'
+  document.getElementById('playButton').style.display = 'block'
+  document.getElementById('statsButton').style.display = 'none'
+  document.getElementById('stats').style.display = 'none'
+  showStats = false
 
   console.log("Disconnecting.")
   ui.resetClient()
@@ -172,7 +185,7 @@ function updateStats (statEl) {
       sv = c.serverVersion
 
   var latency = c.dataStats ? c.dataStats.mean.toFixed(2) : '--',
-      latencyDev = c.dataStats ? Math.sqrt(c.dataStats.variance.toFixed(2)) : '--'
+      latencyDev = c.dataStats ? Math.sqrt(c.dataStats.variance).toFixed(2) : '--'
 
   var codec = 'Opus',
       spp = window.mumbleWebConfig.settings.samplesPerPacket
@@ -215,12 +228,14 @@ function toggleStats () {
 
   if (showStats) {
 
+    statEl.style.display = 'block'
     statTimer = setInterval(updateStats, 1000, statEl)
 
   } else {
 
-    clearInterval(statTimer)
+    statEl.style.display = 'none'
     statEl.innerHTML = ''
+    clearInterval(statTimer)
 
   }
 
@@ -234,8 +249,14 @@ window.onload = function () {
 
   console.log(queryParams)
 
-  document.getElementById('resumeStreamButton').addEventListener('click', resumeStream, false)
-  document.getElementById('pauseStreamButton').addEventListener('click', pauseStream, false)
+  var [hall, language] = queryParams.channel.split('-')
+
+  document.querySelector('#greeter h1').innerHTML = hall
+  document.querySelector('#greeter h2').innerHTML = language
+
+
+  document.getElementById('playButton').addEventListener('click', playStream, false)
+  document.getElementById('pauseButton').addEventListener('click', pauseStream, false)
   document.getElementById('statsButton').addEventListener('click', toggleStats, false)
 
 }
