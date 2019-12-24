@@ -8,13 +8,12 @@ import BufferQueueNode from 'web-audio-buffer-queue'
 import audioContext from 'audio-context'
 
 class GlobalBindings {
-  constructor (config) {
-    this.config = config
+  constructor () {
     this.connector = new WorkerBasedMumbleConnector()
     this.client = null
     this.socketURL = 'wss://<unset>'
 
-    this.connect = (username, host, port, token, password, initialChannelName) => {
+    this.connect = (username, host, port, initialChannelName) => {
       this.resetClient()
 
       console.log('Connecting to server ' + host)
@@ -30,7 +29,7 @@ class GlobalBindings {
       // TODO: token
       this.connector.connect(this.socketURL, {
         username: username,
-        password: password
+        password: ''
       }).done(client => {
 
         console.log('Connected!')
@@ -147,7 +146,7 @@ class GlobalBindings {
 
   }
 }
-var ui = new GlobalBindings(window.mumbleWebConfig)
+var ui = new GlobalBindings()
 
 // Used only for debugging
 window.mumbleUi = ui
@@ -163,11 +162,9 @@ function playStream () {
 
   console.log("Connecting...")
   ui.connect(
-    'web-' + Math.random().toString(36).substring(6),
+    queryParams.username,
     queryParams.address,
     queryParams.port,
-    queryParams.token,
-    queryParams.password,
     queryParams.channel
   )
 
@@ -199,7 +196,7 @@ function updateStats (statEl) {
       latencyDev = c.dataStats ? Math.sqrt(c.dataStats.variance).toFixed(2) : '--'
 
   var codec = 'Opus',
-      spp = window.mumbleWebConfig.settings.samplesPerPacket
+      spp = 960
 
   var brm = (c.getMaxBitrate(spp, false)/1000).toFixed(1),
       bwm = (c.maxBandwidth/1000).toFixed(1),
