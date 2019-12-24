@@ -24,28 +24,33 @@
         <h2>This makes us sad because we can't deliver our translations :(</h2>
       </noscript>
 
-      <h1></h1>
-      <h2></h2>
+      <script>
+        var splitKey = window.location.href.split('channel=')
+        var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
+        var ch = fullChannel.split('-')
+        document.write('<h1>' + ch[0] + '</h1>')
+        document.write('<h2>' + ch[1] + '</h2>')
+      </script>
 
     </div>
 
     <div id="controls">
 
-      <a id="playButton">
-        <img src="./img/play.svg" alt="play">
+      <div id="play">
+        <img src="./img/play.svg" alt="play" id="playButton">
         <h3>Press to start listening</h3>
-        <b>[ Tip: Make sure you have your headphones plugged in! ]</b>
-      </a>
-      <a id="pauseButton" style="display: none">
-        <img src="./img/pause.svg" alt="pause"><br>
+        <b>[ Important: Make sure you have your headphones plugged in! ]</b>
+      </div>
+      <div id="pause" style="display: none">
+        <img src="./img/pause.svg" alt="pause" id="pauseButton">
         <h3>Press to pause stream</h3>
         <b>[ Tip: If your connection is poor, try connecting to this domain on a mumble client! ]</b>
-      </a>
-      <a id="loading" style="display: none">
-        <img src="./img/loading.svg" alt="loading"><br>
+      </div>
+      <div id="loading" style="display: none">
+        <img src="./img/loading.svg" alt="loading">
         <h3>Connecting to server</h3>
         <b>[ (0%): Generating witty loading messages ]</b>
-      </a>
+      </div>
 
     </div>
 

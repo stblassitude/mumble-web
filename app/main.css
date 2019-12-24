@@ -2,11 +2,12 @@ html, body {
 
   margin: 0;
   padding: 0;
-  background: #444;
+
+  background: #222;
+
   font-family: sans-serif;
-  color: #ccc;
-  box-sizing: border-box;
   text-align: center;
+  color: #ccc;
 
 }
 
@@ -15,27 +16,33 @@ header {
 }
 
 header img {
+
   height: 8em;
   max-width: 90%;
   margin: 2em 0 1em;
+
 }
 
 #greeter {
+
   padding: 1em;
   text-align: center;
-  background: #555;
+  background: #333;
+
 }
 
 #halls {
+
   padding: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 }
 
 #halls > div {
 
-  background: #555;
+  background: #333;
 
   width: 12em;
   margin: 1em;
@@ -53,6 +60,12 @@ header img {
 
 }
 
+#halls a {
+
+  text-decoration: none;
+
+}
+
 ul {
 
   margin: 0;
@@ -65,7 +78,7 @@ ul li {
 
   width: 100%;
   list-style: none;
-  border-top: 2px solid #444;
+  border-top: 2px solid #222;
   padding: .5em 0;
 
   text-align: center;
@@ -73,14 +86,11 @@ ul li {
 }
 
 a {
-
-  text-decoration: none;
   color: inherit;
-
 }
 
 a:hover li {
-  background: #666;
+  background: #555;
 }
 
 #controls, #stats {
@@ -91,29 +101,22 @@ a:hover li {
 }
 
 #stats {
-  background: #555;
-}
-
-#controls a {
-
-  display: block;
-  cursor: pointer;
-
+  background: #333;
 }
 
 #controls img {
 
   display: block;
-
   height:10em;
   max-width: 42%;
-
   margin: 1em auto;
+
+  cursor: pointer;
 
 }
 
 #statsButton {
   padding: .4em;
-  background: #555;
+  background: #333;
   cursor: pointer;
 }

@@ -71,7 +71,7 @@ class GlobalBindings {
         document.querySelector('#loading b').innerHTML = '[ (92%): Spreading compassion... ]'
 
         document.getElementById('loading').style.display = 'none'
-        document.getElementById('pauseButton').style.display = 'block'
+        document.getElementById('pause').style.display = 'block'
         document.getElementById('statsButton').style.display = 'inline-block'
 
       }, err => {
@@ -156,7 +156,7 @@ var queryParams = null
 
 function playStream () {
 
-  document.getElementById('playButton').style.display = 'none'
+  document.getElementById('play').style.display = 'none'
   document.getElementById('loading').style.display = 'block'
 
   document.querySelector('#loading b').innerHTML = '[ (16%): Translating rosetta stone... ]'
@@ -175,8 +175,8 @@ function playStream () {
 
 function pauseStream () {
 
-  document.getElementById('pauseButton').style.display = 'none'
-  document.getElementById('playButton').style.display = 'block'
+  document.getElementById('pause').style.display = 'none'
+  document.getElementById('play').style.display = 'block'
   document.getElementById('statsButton').style.display = 'none'
 
   if (showStats)
@@ -259,12 +259,6 @@ window.onload = function () {
   queryParams = Object.assign({}, window.mumbleWebConfig.defaults, queryParams)
 
   console.log(queryParams)
-
-  var [hall, language] = queryParams.channel.split('-')
-
-  document.querySelector('#greeter h1').innerHTML = hall
-  document.querySelector('#greeter h2').innerHTML = language
-
 
   document.getElementById('playButton').addEventListener('click', playStream, false)
   document.getElementById('pauseButton').addEventListener('click', pauseStream, false)
