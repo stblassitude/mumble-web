@@ -135,3 +135,12 @@ a:hover li {
   text-align: justify;
 
 }
+
+.warning {
+
+  padding: 1em;
+
+  background: #f77;
+  color: #222;
+
+}
