@@ -6,7 +6,8 @@ module.exports = {
       './app/stream.html',
       './app/native.html'
     ],
-    config: './app/config.js'
+    config: './app/config.js',
+    fahrplan: './app/fahrplan.js'
   },
   output: {
     filename: '[name].js',

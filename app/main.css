@@ -47,8 +47,13 @@ header img {
 
 #halls > div {
 
-  width: 12em;
+  position: relative;
+
+  width: 14em;
   margin: 1em;
+
+  /* Compensate button overlap: 3*(1em (text) + 2*.5em (padding) + .2em(border)) */
+  padding-bottom: 6.6em;
 
   background: #333;
   overflow: hidden;
@@ -69,7 +74,10 @@ header img {
 
 }
 
-ul {
+#halls ul {
+
+  position: absolute;
+  bottom: 0;
 
   width: 100%;
   margin: 0;
@@ -77,12 +85,12 @@ ul {
 
 }
 
-ul li {
+#halls ul li {
 
   width: 100%;
   padding: .5em 0;
 
-  border-top: 2px solid #222;
+  border-top: .2em solid #222;
   list-style: none;
   text-align: center;
 
@@ -143,4 +151,8 @@ a:hover li {
   background: #f77;
   color: #222;
 
+}
+
+.talkinfo {
+  padding: 0 1em;
 }
