@@ -1,10 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
 
   margin: 0;
   padding: 0;
 
   background: #222;
-
   font-family: sans-serif;
   text-align: center;
   color: #ccc;
@@ -23,9 +26,11 @@ header img {
 
 }
 
-#greeter {
+.greeter {
 
+  width: 100%;
   padding: 1em;
+
   text-align: center;
   background: #333;
 
@@ -42,13 +47,11 @@ header img {
 
 #halls > div {
 
-  background: #333;
-
   width: 12em;
   margin: 1em;
 
+  background: #333;
   overflow: hidden;
-
   text-align: center;
 
 }
@@ -68,19 +71,19 @@ header img {
 
 ul {
 
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
 
 }
 
 ul li {
 
   width: 100%;
-  list-style: none;
-  border-top: 2px solid #222;
   padding: .5em 0;
 
+  border-top: 2px solid #222;
+  list-style: none;
   text-align: center;
 
 }
@@ -93,10 +96,10 @@ a:hover li {
   background: #555;
 }
 
-#controls, #stats {
+#controls, #stats, .text {
 
   margin: 1em 0;
-  padding: 1em 0;
+  padding: 1em;
 
 }
 
@@ -116,7 +119,19 @@ a:hover li {
 }
 
 #statsButton {
+
   padding: .4em;
+
   background: #333;
   cursor: pointer;
+
+}
+
+.text {
+
+  max-width: 42em;
+  margin: auto;
+
+  text-align: justify;
+
 }
