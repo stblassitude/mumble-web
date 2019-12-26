@@ -24,7 +24,7 @@ class GlobalBindings {
 
       this.socketURL = `wss://${host}:${port}`
 
-      document.querySelector('#loading b').innerHTML = '[ (42%): Breaking down language barriers... ]'
+      document.querySelector('#loading b').innerHTML = '[(42%): Breaking down language barriers...]'
 
       // TODO: token
       this.connector.connect(this.socketURL, {
@@ -33,7 +33,7 @@ class GlobalBindings {
       }).done(client => {
 
         console.log('Connected!')
-        document.querySelector('#loading b').innerHTML = '[ (69%): Cracking enigma... ]'
+        document.querySelector('#loading b').innerHTML = '[(69%): Cracking enigma...]'
 
         this.client = client
         // Prepare for connection errors
@@ -67,7 +67,7 @@ class GlobalBindings {
         // Tell server this device is muted
         this.client.setSelfMute(true)
 
-        document.querySelector('#loading b').innerHTML = '[ (92%): Spreading compassion... ]'
+        document.querySelector('#loading b').innerHTML = '[(92%): Spreading compassion...]'
 
         document.getElementById('loading').style.display = 'none'
         document.getElementById('pause').style.display = 'block'
@@ -158,7 +158,7 @@ function playStream () {
   document.getElementById('play').style.display = 'none'
   document.getElementById('loading').style.display = 'block'
 
-  document.querySelector('#loading b').innerHTML = '[ (16%): Translating rosetta stone... ]'
+  document.querySelector('#loading b').innerHTML = '[(16%): Translating rosetta stone...]'
 
   console.log("Connecting...")
   ui.connect(
