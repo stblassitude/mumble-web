@@ -13,7 +13,7 @@ function updateUI(room, day, cday, time, title, started) {
 
 }
 
-function findCurrentTalks(fp) {
+function findCurrentTalks(json) {
 
   const now = new Date()
 
@@ -25,7 +25,7 @@ function findCurrentTalks(fp) {
   const day = dayDate.getDate() - 27
   const cday = (day >= 0) ? day : 0
 
-  const rooms = fp.schedule.conference.days[cday].rooms
+  const rooms = json.days[cday].rooms
   for (const room in rooms) {
 
     const talks = rooms[room]
@@ -53,9 +53,29 @@ function findCurrentTalks(fp) {
 
 function updateFromFahrplan() {
 
-  fetch('/fahrplan.json')
-    .then(response => response.json())
-    .then(json => findCurrentTalks(json))
+  const pMain = (fetch('https://streaming.c3lingo.org/fahrplan.json')
+    .then(response => response.json()))
+
+  const pWikipaka = (fetch('https://streaming.c3lingo.org/fahrplan-wikipaka.json')
+    .then(response => response.json()))
+
+  Promise.all([pMain, pWikipaka])
+    .then(function(jsons) {
+
+      var json = jsons[0].schedule.conference
+      const jsonWikipaka = jsons[1].schedule.conference
+
+      for (var i = 0; i < json.days.length; i++) {
+
+        const wikipakaRoom = jsonWikipaka.days[i].rooms['WikiPaka WG: Esszimmer']
+        json.days[i].rooms['WikiPaka'] = wikipakaRoom
+
+      }
+
+      console.log(json)
+      findCurrentTalks(json)
+
+    })
 
 }
 
