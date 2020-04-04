@@ -53,10 +53,10 @@ function findCurrentTalks(json) {
 
 function updateFromFahrplan() {
 
-  const pMain = (fetch('https://streaming.c3lingo.org/fahrplan.json')
+  const pMain = (fetch('https://mumble.c3lingo.org/fahrplan.json')
     .then(response => response.json()))
 
-  const pWikipaka = (fetch('https://streaming.c3lingo.org/fahrplan-wikipaka.json')
+  const pWikipaka = (fetch('https://mumble.c3lingo.org/fahrplan-wikipaka.json')
     .then(response => response.json()))
 
   Promise.all([pMain, pWikipaka])
