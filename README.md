@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/c3lingo/mumble-web/workflows/Docker%20Image%20CI/badge.svg)
+
 # mumble-web for c3lingo
 
 This is a version of [mumble-web](https://github.com/ailox/mumble-web) customized for use by the [c3lingo team](https://wiki.c3lingo.org), which provides live interpretation of talks at a number of events.
