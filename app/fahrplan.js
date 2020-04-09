@@ -13,7 +13,7 @@ function updateUI(room, day, cday, time, title, started) {
 
 }
 
-function findCurrentTalks(json) {
+function findCurrentTalks(xml) {
 
   const now = new Date()
 
@@ -21,18 +21,20 @@ function findCurrentTalks(json) {
   var dayDate = new Date(now.getTime())
   dayDate.setHours(now.getHours() - 4)
 
-   // 1st day is 27th
-  const day = dayDate.getDate() - 27
+  // 1st day is 11th
+  const day = dayDate.getDate() - 11
   const cday = (day >= 0) ? day : 0
 
-  const rooms = json.days[cday].rooms
-  for (const room in rooms) {
+  const rooms = xml.getElementsByTagName("day")[cday]
+                   .getElementsByTagName("room")
 
-    const talks = rooms[room]
+  for (const room of rooms) {
+
+    const talks = room.getElementsByTagName("event")
     for (const talk of talks) {
 
-      const date = new Date(talk.date)
-      const dur = talk.duration.split(':')
+      const date = new Date(talk.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+      const dur = talk.getElementsByTagName("duration")[0].childNodes[0].nodeValue.split(':')
       const durMins = (dur[0] * 60) + (dur[1] * 1)
       const end = new Date(date.getTime() + durMins * 60 * 1000)
 
@@ -41,7 +43,12 @@ function findCurrentTalks(json) {
       if (over)
         continue // check if next talk is relevant
 
-      updateUI(room, day, cday, talk.start, talk.title, started)
+      updateUI( room.attributes.name.value,
+                day,
+                cday,
+                talk.getElementsByTagName("start")[0].childNodes[0].nodeValue,
+                talk.getElementsByTagName("title")[0].childNodes[0].nodeValue,
+                started)
 
       break
 
@@ -53,29 +60,18 @@ function findCurrentTalks(json) {
 
 function updateFromFahrplan() {
 
-  const pMain = (fetch('https://mumble.c3lingo.org/fahrplan.json')
-    .then(response => response.json()))
+  const pMain = (fetch('/fahrplan.xml')
+    .then(response => response.text()))
 
-  const pWikipaka = (fetch('https://mumble.c3lingo.org/fahrplan-wikipaka.json')
-    .then(response => response.json()))
+  pMain.then(function(text) {
 
-  Promise.all([pMain, pWikipaka])
-    .then(function(jsons) {
+    const xml = (new window.DOMParser()).parseFromString(text, "text/xml")
 
-      var json = jsons[0].schedule.conference
-      const jsonWikipaka = jsons[1].schedule.conference
+    console.log(xml)
 
-      for (var i = 0; i < json.days.length; i++) {
+    findCurrentTalks(xml.getElementsByTagName("schedule")[0])
 
-        const wikipakaRoom = jsonWikipaka.days[i].rooms['WikiPaka WG: Esszimmer']
-        json.days[i].rooms['WikiPaka'] = wikipakaRoom
-
-      }
-
-      console.log(json)
-      findCurrentTalks(json)
-
-    })
+  })
 
 }
 
