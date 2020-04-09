@@ -35,9 +35,9 @@
         var splitKey = window.location.href.split('channel=')
         var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
         var ch = fullChannel.split('-')
-        var hall = ch[0]
+        var hall = ch[1]
         hall = hall.charAt(0).toUpperCase() + hall.slice(1)
-        var lang = ch[1]
+        var lang = ch[ch.length-1]
         if (lang == 0)
           lang = "Speaker"
         else if (lang == 1)
