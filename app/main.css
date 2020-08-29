@@ -49,7 +49,7 @@ header img {
 
   position: relative;
 
-  width: 14em;
+  min-width: 14em;
   margin: 1em;
 
   /* Compensate button overlap: 2*(1em (text) + 2*.5em (padding) + .2em(border)) */
@@ -64,7 +64,7 @@ header img {
 #halls img {
 
   height: 8em;
-  margin: 1em 0;
+  margin: 1em;
 
 }
 

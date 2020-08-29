@@ -13,16 +13,70 @@ function updateUI(room, day, cday, time, title, started) {
 
 }
 
-function findCurrentTalks(xml) {
+function daysBetween(date1, date2) {
+
+    // The number of milliseconds in one day
+    const ONE_DAY = 1000 * 60 * 60 * 24;
+
+    // Calculate the difference in milliseconds
+    const differenceMs = date1 - date2;
+
+    // Convert back to days and return
+    return Math.floor(differenceMs / ONE_DAY);
+
+}
+
+function findCurrentTalksJSON(json) {
 
   const now = new Date()
+  const startDate = new Date(json.start)
 
   // switch day over at 4:00 AM
   var dayDate = new Date(now.getTime())
   dayDate.setHours(now.getHours() - 4)
 
-  // 1st day is 11th
-  const day = dayDate.getDate() - 11
+  const day = daysBetween(dayDate, startDate)
+  const cday = (day >= 0) ? day : 0
+
+  const rooms = json.days[cday].rooms
+  for (const room in rooms) {
+
+    const talks = rooms[room]
+    for (const talk of talks) {
+
+      const date = new Date(talk.date)
+      const dur = talk.duration.split(':')
+      const durMins = (dur[0] * 60) + (dur[1] * 1)
+      const end = new Date(date.getTime() + durMins * 60 * 1000)
+
+      const started = ((date - now) < 0)
+      const over = ((end - now) < 0)
+      if (over)
+        continue // check if next talk is relevant
+
+      updateUI(room, day, cday, talk.start, talk.title, started)
+
+      break
+
+    }
+
+  }
+
+}
+
+function findCurrentTalksXML(xml) {
+
+  const now = new Date()
+
+  const conf = xml.getElementsByTagName("conference")[0]
+  const startDateUTC = conf.getElementsByTagName("start")[0].childNodes[0].nodeValue
+  const startDate = new Date(startDateUTC)
+
+  // switch day over at 4:00 AM
+  var dayDate = new Date(now.getTime())
+  dayDate.setHours(now.getHours() - 4)
+
+  const day = daysBetween(dayDate, startDate)
   const cday = (day >= 0) ? day : 0
 
   const rooms = xml.getElementsByTagName("day")[cday]
@@ -60,18 +114,34 @@ function findCurrentTalks(xml) {
 
 function updateFromFahrplan() {
 
-  const pMain = (fetch('/fahrplan.xml')
-    .then(response => response.text()))
+  const pMain = (fetch('https://talks.mrmcd.net/ptt/schedule/export/schedule.json')
+    .then(response => response.json()))
 
-  pMain.then(function(text) {
+  // Add multiple fahrplans in this list
+  Promise.all([pMain])
+    .then(function(jsons) {
 
-    const xml = (new window.DOMParser()).parseFromString(text, "text/xml")
+      var json = jsons[0].schedule.conference
 
-    console.log(xml)
+      // XML
+      //const xml = (new window.DOMParser()).parseFromString(text, "text/xml")
+      //console.log(xml)
+      //findCurrentTalksXML(xml.getElementsByTagName("schedule")[0])
 
-    findCurrentTalks(xml.getElementsByTagName("schedule")[0])
+      // Old multi-fahrplan stuff, should be redone.
+      //const jsonWikipaka = jsons[1].schedule.conference
 
-  })
+      //for (var i = 0; i < json.days.length; i++) {
+      //
+      //  const wikipakaRoom = jsonWikipaka.days[i].rooms['WikiPaka WG: Esszimmer']
+      //  json.days[i].rooms['WikiPaka'] = wikipakaRoom
+      //
+      //}
+
+      console.log(json)
+      findCurrentTalksJSON(json)
+
+    })
 
 }
 
