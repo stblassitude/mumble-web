@@ -22,34 +22,64 @@
 
       <div class="text">
 
+        <div id="langswitch">
+          <a href="javascript:switchLang('en')">EN</a> &middot;
+          <a href="javascript:switchLang('de')">DE</a>
+        </div>
+
         <script>
-          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
           if (isSafari)
             document.write('<div class="warning">Safari/iOS doesn\'t work yet. Know your way around AudioContext with Safari? <a href="mailto&#58;win&#37;6Be&#108;%73%&#52;0c&#97;m&#112;u&#115;&#46;t%&#55;5-&#37;62&#101;r%6C%69&#37;6&#69;&#46;&#37;&#54;4e">Contact us</a>.</div>')
+
+
+          var syslang = navigator.language.split('-')[0]
+
+          var styleEl = document.createElement('style')
+          document.head.appendChild(styleEl)
+          var styleSheet = styleEl.sheet
+          styleSheet.insertRule('.greeter section,.greeter h2.sep {display:block}')
+
+          function switchLang(lang) {
+            styleSheet.deleteRule(0)
+            styleSheet.insertRule('.greeter section:not([data-lang='+lang+']),.greeter h2.sep {display:none}')
+          }
+          switchLang(syslang)
+
+          document.getElementById('langswitch').style.display = 'block'
+
         </script>
 
-        <h1>You can join the live translations here</h1>
-        <h2>Choose your channel below to start</h2>
+        <section data-lang="en">
 
-        <p>Or alternatively, <a href="./native.html">connect with a native
-        Mumble client</a>.</p>
+          <h1>You can join the live translations here</h1>
+          <h2>Choose your channel below to start</h2>
 
-        <p><b>Translation 1</b> is either English or German, whichever is not
-        the original, and at <b>Translation 2</b> there sometimes is another
-        language (e.g. French).</p>
+          <p>Or alternatively, <a href="./native.html">connect with a native
+          Mumble client</a>.</p>
 
-        <h2>~</h2>
+          <p><b>Translation 1</b> is either English or German, whichever is not
+          the original, and at <b>Translation 2</b> there sometimes is another
+          language (e.g. French).</p>
 
-        <h1>Hier gibt es Simultan&shy;übersetzungen</h1>
-        <h2>Wähle einen Kanal, um den gewünschten Audio-Stream im Browser zu
-        starten</h2>
+        </section>
 
-        <p>Oder, wahlweise, <a href="./native.html">verbinde mithilfe eines
-        nativen Mumble-Clients</a>.</p>
+        <h2 class="sep">---</h2>
 
-        <p><b>Translation 1</b> ist Englisch or Deutsch, je nachdem welche nicht
-        die Originalsprache ist. Unter <b>Translation 2</b> ist manchmal
-        irgendeine weitere Sprache (z.B. Französisch).</p>
+        <section data-lang="de">
+
+          <h1>Hier gibt es Simultan&shy;übersetzungen</h1>
+          <h2>Wähle einen Kanal, um den gewünschten Audio-Stream im Browser zu
+          starten</h2>
+
+          <p>Oder, wahlweise, <a href="./native.html">verbinde mithilfe eines
+          nativen Mumble-Clients</a>.</p>
+
+          <p><b>Translation 1</b> ist Englisch or Deutsch, je nachdem welche nicht
+          die Originalsprache ist. Unter <b>Translation 2</b> ist manchmal
+          irgendeine weitere Sprache (z.B. Französisch).</p>
+
+        </section>
 
       </div>
 
@@ -57,12 +87,48 @@
 
     <div id="halls">
 
-      <div id="schneider-hoover">
-        <img src="./img/SH.svg" alt="Schneider-Hoover">
+      <div id="rc-one">
+        <img src="./img/rc1.svg" alt="RC 1">
         <div class="talkinfo"></div>
         <ul>
-          <a href="./stream.html?channel=DiVOC-SchneiderHoover-Translation-1"><li>Translation 1</li></a>
-          <a href="./stream.html?channel=DiVOC-SchneiderHoover-Translation-2"><li>Translation 2</li></a>
+          <a href="./stream.html?channel=rc3-rc-one-translation-1"><li>Translation 1</li></a>
+          <a href="./stream.html?channel=rc3-rc-one-translation-2"><li>Translation 2</li></a>
+        </ul>
+      </div>
+
+      <div id="rc-two">
+        <img src="./img/rc2.svg" alt="RC 2">
+        <div class="talkinfo"></div>
+        <ul>
+          <a href="./stream.html?channel=rc3-rc-two-translation-1"><li>Translation 1</li></a>
+          <a href="./stream.html?channel=rc3-rc-two-translation-2"><li>Translation 2</li></a>
+        </ul>
+      </div>
+
+      <div id="hamburg">
+        <img src="./img/hamburg.svg" alt="Hamburg">
+        <div class="talkinfo"></div>
+        <ul>
+          <a href="./stream.html?channel=rc3-hamburg-translation-1"><li>Translation 1</li></a>
+          <a href="./stream.html?channel=rc3-hamburg-translation-2"><li>Translation 2</li></a>
+        </ul>
+      </div>
+
+      <div id="chaoszone">
+        <img src="./img/chaoszone.svg" alt="Chaoszone">
+        <div class="talkinfo"></div>
+        <ul>
+          <a href="./stream.html?channel=rc3-chaoszone-translation-1"><li>Translation 1</li></a>
+          <a href="./stream.html?channel=rc3-chaoszone-translation-2"><li>Translation 2</li></a>
+        </ul>
+      </div>
+
+      <div id="r3s">
+        <img src="./img/r3s.svg" alt="R3S">
+        <div class="talkinfo"></div>
+        <ul>
+          <a href="./stream.html?channel=rc3-r3s-translation-1"><li>Translation 1</li></a>
+          <a href="./stream.html?channel=rc3-r3s-translation-2"><li>Translation 2</li></a>
         </ul>
       </div>
 

@@ -112,9 +112,9 @@ function findCurrentTalksXML(xml) {
 
 }
 
-function updateFromFahrplan() {
+function updateFromFahrplan(url) {
 
-  const pMain = (fetch('https://talks.mrmcd.net/ptt/schedule/export/schedule.json')
+  const pMain = (fetch(url)
     .then(response => response.json()))
 
   // Add multiple fahrplans in this list
@@ -147,6 +147,6 @@ function updateFromFahrplan() {
 
 window.onload = function() {
 
-  updateFromFahrplan()
+  //updateFromFahrplan('https://event.example.com/fahrplan.json')
 
 }

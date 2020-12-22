@@ -7,7 +7,7 @@ html, body {
   margin: 0;
   padding: 0;
 
-  background: #222;
+  background: #000;
   font-family: sans-serif;
   text-align: center;
   color: #ccc;
@@ -32,8 +32,12 @@ header img {
   padding: 1em;
 
   text-align: center;
-  background: #333;
+  background: #14121d;
 
+}
+
+.greeter h1, .greeter h2 {
+  text-transform: uppercase;
 }
 
 #halls {
@@ -55,9 +59,11 @@ header img {
   /* Compensate button overlap: 2*(1em (text) + 2*.5em (padding) + .2em(border)) */
   padding-bottom: 4.4em;
 
-  background: #333;
+  background: #000;
   overflow: hidden;
   text-align: center;
+
+  text-transform: uppercase;
 
 }
 
@@ -90,7 +96,6 @@ header img {
   width: 100%;
   padding: .5em 0;
 
-  border-top: .2em solid #222;
   list-style: none;
   text-align: center;
 
@@ -101,7 +106,8 @@ a {
 }
 
 a:hover li {
-  background: #555;
+  color: #000;
+  background: #2FA4E7;
 }
 
 #controls, #stats, .text {
@@ -112,7 +118,7 @@ a:hover li {
 }
 
 #stats {
-  background: #333;
+  background: #14121d;
 }
 
 #controls img {
@@ -130,7 +136,7 @@ a:hover li {
 
   padding: .4em;
 
-  background: #333;
+  background: #14121d;
   cursor: pointer;
 
 }
@@ -160,3 +166,18 @@ h1, h2, h3, h4, h5, h6 {
 .talkinfo {
   padding: 0 1em;
 }
+
+#langswitch {
+  text-align: center;
+  display: none;
+}
+
+#rc-one,#r3s {outline: 1px solid #6800E7; color: #6800E7;}
+#rc-two      {outline: 1px solid #05B9EC; color: #05B9EC;}
+#hamburg     {outline: 1px solid #02FAE0; color: #02FAE0;}
+#chaoszone   {outline: 1px solid #B239FF; color: #B239FF;}
+
+#rc-one a:hover li,#r3s a:hover li {background: #6800E7;}
+#rc-two a:hover li                 {background: #05B9EC;}
+#hamburg a:hover li                {background: #02FAE0;}
+#chaoszone a:hover li              {background: #B239FF;}
