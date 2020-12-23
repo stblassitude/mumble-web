@@ -1,6 +1,14 @@
+var C3T_ROOM_MAP = {
+  'rc1': document.querySelector('#rc1 .talkinfo'),
+  'rc2': document.querySelector('#rc2 .talkinfo'),
+  'chaosstudio-hamburg': document.querySelector('#chaosstudio-hamburg .talkinfo'),
+  'ChaosZone TV Stream': document.querySelector('#chaoszone .talkinfo'),
+  'r3s - Monheim/Rhein': document.querySelector('#r3s .talkinfo')
+}
+
 function updateUI(room, day, cday, time, title, started) {
 
-  const el = document.querySelector('#' + room.toLowerCase() + ' .talkinfo')
+  const el = C3T_ROOM_MAP[room]
 
   const status = started ? 'Since ' : 'Starts '
 
@@ -40,6 +48,10 @@ function findCurrentTalksJSON(json) {
 
   const rooms = json.days[cday].rooms
   for (const room in rooms) {
+
+    // Skip all rooms we don't support
+    if (C3T_ROOM_MAP.hasOwnProperty(room) == false)
+      continue
 
     const talks = rooms[room]
     for (const talk of talks) {
@@ -147,6 +159,6 @@ function updateFromFahrplan(url) {
 
 window.onload = function() {
 
-  //updateFromFahrplan('https://event.example.com/fahrplan.json')
+  updateFromFahrplan('/schedule.json')
 
 }

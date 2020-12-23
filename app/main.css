@@ -63,8 +63,10 @@ header img {
   overflow: hidden;
   text-align: center;
 
-  text-transform: uppercase;
+}
 
+#halls > div li {
+  text-transform: uppercase;
 }
 
 #halls img {
@@ -172,12 +174,17 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-#rc-one,#r3s {outline: 1px solid #6800E7; color: #6800E7;}
-#rc-two      {outline: 1px solid #05B9EC; color: #05B9EC;}
-#hamburg     {outline: 1px solid #02FAE0; color: #02FAE0;}
-#chaoszone   {outline: 1px solid #B239FF; color: #B239FF;}
+#halls > div:nth-child(4n+1) {outline: 1px solid #6800E7; color: #6800E7;}
+#halls > div:nth-child(4n+2) {outline: 1px solid #05B9EC; color: #05B9EC;}
+#halls > div:nth-child(4n+3) {outline: 1px solid #02FAE0; color: #02FAE0;}
+#halls > div:nth-child(4n+4) {outline: 1px solid #B239FF; color: #B239FF;}
 
-#rc-one a:hover li,#r3s a:hover li {background: #6800E7;}
-#rc-two a:hover li                 {background: #05B9EC;}
-#hamburg a:hover li                {background: #02FAE0;}
-#chaoszone a:hover li              {background: #B239FF;}
+#halls > div:nth-child(4n+1) a li {border-top: 1px solid #6800E7;}
+#halls > div:nth-child(4n+2) a li {border-top: 1px solid #05B9EC;}
+#halls > div:nth-child(4n+3) a li {border-top: 1px solid #02FAE0;}
+#halls > div:nth-child(4n+4) a li {border-top: 1px solid #B239FF;}
+
+#halls > div:nth-child(4n+1) a:hover li {background: #6800E7;}
+#halls > div:nth-child(4n+2) a:hover li {background: #05B9EC;}
+#halls > div:nth-child(4n+3) a:hover li {background: #02FAE0;}
+#halls > div:nth-child(4n+4) a:hover li {background: #B239FF;}
