@@ -53,7 +53,7 @@ header img {
 
   position: relative;
 
-  width: 14em;
+  width: 18em;
   margin: 1em;
 
   /* Compensate button overlap: 2*(1em (text) + 2*.5em (padding) + .2em(border)) */
