@@ -56,8 +56,8 @@ header img {
   width: 18em;
   margin: 1em;
 
-  /* Compensate button overlap: 2*(1em (text) + 2*.5em (padding) + .2em(border)) */
-  padding-bottom: 4.4em;
+  /* Compensate button overlap: (#channels)*(1em (text) + 2*.5em (padding) + .2em(border)) */
+  padding-bottom: calc(1 * (1em + 2 * .5em + .2em));
 
   background: #000;
   overflow: hidden;
