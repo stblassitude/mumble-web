@@ -122,12 +122,19 @@ function findCurrentTalksXML(xml) {
 
 function updateFromFahrplan(url) {
 
-  const pMain = (fetch(url)
-    .then(response => response.json()))
+  const pMain = fetch(url)
+    .then(response => response.json())
+    .catch(error => {
+      console.log("Could not retrieve schedule info.")
+      return null;
+    })
 
   // Add multiple fahrplans in this list
   Promise.all([pMain])
     .then(function(jsons) {
+
+      if (jsons[0] == null)
+        return;
 
       var json = jsons[0].schedule.conference
 

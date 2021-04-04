@@ -189,8 +189,17 @@ h2 {
   font-weight: bold;
 }
 
+body[lang="en"] [data-lang]:not([data-lang="en"]),
+body[lang="de"] [data-lang]:not([data-lang="de"]) {
+  display: none;
+}
+
 #langswitch {
   display: none;
+}
+
+body[lang] #langswitch {
+  display: block;
 }
 
 #langswitch a {
@@ -203,12 +212,9 @@ h2 {
   border: 1px solid #ff5d42;
 }
 
-#langswitch a.current {
+body[lang="en"] #langswitch a[data-lang="en"],
+body[lang="de"] #langswitch a[data-lang="de"] {
   background-color:#52397f;
-}
-
-body[data-lang] #langswitch {
-  display: block;
 }
 
 .sep {
@@ -216,16 +222,8 @@ body[data-lang] #langswitch {
   border-bottom: 3px solid #333333;
 }
 
-body[data-lang] .sep {
+body[lang] .sep {
   display: none;
-}
-
-body[data-lang] *[data-lang] {
-  display: none;
-}
-
-body[data-lang] *[data-lang].current {
-  display: block;
 }
 
 #halls > div:nth-child(4n+1) {
@@ -270,4 +268,3 @@ body[data-lang] *[data-lang].current {
 #halls > div:nth-child(4n+4) li a:hover {
   background-color: #b239ff;
 }
-

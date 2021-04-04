@@ -32,14 +32,12 @@
 			var splitKey = window.location.href.split('channel=')
 			var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
 			var ch = fullChannel.split('-')
-			var hall = ch[1]
-			if (hall == 'rc')
-			  hall = hall + ' ' + ch[2]
+			var hall = ch[0]
 			var lang = ch[ch.length-1]
 			if (lang == 0)
 			  lang = "Speaker"
 			else if (lang == 1)
-			  lang = "Translation 1"
+			  lang = "Translation EN/DE"
 			else if (lang == 2)
 			  lang = "Translation 2"
 			document.write('<h1>' + hall + '</h1>')
