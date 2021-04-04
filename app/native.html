@@ -4,85 +4,88 @@
     <title>c3lingo Live Translation | Native</title>
     <meta charset="utf-8">
     <meta name="theme-color" content="#444">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
-    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="dark_c3lingo_square-64.png">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
 
-    <header>
+    <main>
 
-      <a href=".">
-        <img src="./img/c3lingo.svg" alt="c3lingo">
-      </a>
+      <div class="logo"><a href="."><img src="img/dark_c3lingo_square.png" alt="c3lingo"></a></div>
 
-    </header>
+        <div class="text">
+          <div id="langswitch">
+		    <a href="javascript:switchLang('en')" data-lang="en">en</a>
+            <a href="javascript:switchLang('de')" data-lang="de">de</a>
+		  </div>
+		</div>
 
-    <div class="greeter">
+	  <section data-lang="en">
+		<div class="greeter">
+		  <div class="text"><h1>Connecting with a native Mumble client</h1></div>
+		</div>
 
-      <h1>Connecting with a native Mumble client</h1>
+		<div class="text">
 
-    </div>
+		  <p>You may also connect with your <a
+		  href="https://wiki.mumble.info/wiki/Mumble_clients">Desktop or Mobile
+		  Mumble client</a>: connect to mumble.c3lingo.org port 64738, and
+		  choose the desired channel. To test your client, go to the “test”
+		  channel.</p>
 
-    <div class="text">
+		  <p>For each of the five halls (Ada, Borg, Clarke, Dijkstra and Eliza), we
+		  have set up three channels. Channel “<i>hall</i>-0” is the original audio
+		  (for “<i>hall</i>”, insert the name of the hall, so we have “ada-0”,
+		  “borg-0”, “clarke-0”, “dijkstra-0”, “eliza-0”). Choose “<i>hall</i>-1”
+		  for English or German (depending on the original language, always
+		  available) or “<i>hall</i>-2” for some further language (depending on
+		  availability of translation angels and other random factors – we expect
+		  to have French, Spanish, Mandarin or even Swiss German at times). Listen
+		  to stage announcements or try <a
+		  href="https://twitter.com/c3lingo">@c3lingo</a> on Twitter to learn about
+		  the languages offered.</p>
 
-      <a href="#german">[Deutsche Erklärung weiter unten]</a>
+		  <p class="warning">The current version of Plumble on F-Droid is
+		  apparently broken. Please use an older version or the one from the Play
+		  Store.</p>
 
-      <p>You may also connect with your <a
-      href="https://wiki.mumble.info/wiki/Mumble_clients">Desktop or Mobile
-      Mumble client</a>: connect to mumble.c3lingo.org port 64738, and
-      choose the desired channel. To test your client, go to the “test”
-      channel.</p>
+		</div>
+	  </section>
 
-      <p>For each of the five halls (Ada, Borg, Clarke, Dijkstra and Eliza), we
-      have set up three channels. Channel “<i>hall</i>-0” is the original audio
-      (for “<i>hall</i>”, insert the name of the hall, so we have “ada-0”,
-      “borg-0”, “clarke-0”, “dijkstra-0”, “eliza-0”). Choose “<i>hall</i>-1”
-      for English or German (depending on the original language, always
-      available) or “<i>hall</i>-2” for some further language (depending on
-      availability of translation angels and other random factors – we expect
-      to have French, Spanish, Mandarin or even Swiss German at times). Listen
-      to stage announcements or try <a
-      href="https://twitter.com/c3lingo">@c3lingo</a> on Twitter to learn about
-      the languages offered.</p>
+	  <section data-lang="de">
+		<div class="greeter">
+		  <div class="text"><h1>Mit einem nativen Mumble-Client verbinden</h1></div>
+		</div>
 
-      <div class="warning">The current version of Plumble on F-Droid is
-      apparently broken. Please use an older version or the one from the Play
-      Store.</div>
+		<div class="text">
 
-    </div>
+		  <p>Du kannst auch mit deinem <a
+		  href="https://wiki.mumble.info/wiki/Mumble_clients">Desktop- oder mobilen
+		  Mumble-Client</a> zuhören: verbinde dich mit Servername
+		  mumble.c3lingo.org, Port 64738, und gehe in den gewünschten Raum. Mit
+		  dem „test"-Channel kannst du deinen Client testen.</p>
 
-    <div class="greeter" id="german">
+		  <p>Für die fünf Säle (Ada, Borg, Clarke, Dijkstra and Eliza) haben wir
+		  jeweils drei Kanäle eingerichtet. „<i>Saal</i>-0“ ist der Originalton
+		  (setze für „<i>Saal</i>“ den Namens des Saals ein, wir haben also
+		  „ada-0“, „borg-0“, „clarke-0“, „dijkstra-0“, „eliza-0“). Wähle
+		  „<i>Saal</i>-1“ für Englisch oder Deutsch (je nach der Originalsprache,
+		  immer verfügbar) und „<i>Saal</i>-2“ für eine weitere Sprache (abhängig
+		  von Verfügbarkeit von Übersetzungsengeln und anderen Zufällen – es dürfte
+		  Französisch, Spanisch, Mandarin und sogar Schwyzerdütsch zu bestimmten
+		  Zeiten geben). Beachte die Ansagen von der Bühne oder versuche auf <a
+		  href="https://twitter.com/c3lingo">@c3lingo</a> bei Twitter zu erfahren,
+		  welche Sprachen angeboten werden.</p>
 
-      <h1>Mit einem nativen Mumble-Client verbinden</h1>
+		  <div class="warning">Die aktuelle Version von Plumble auf F-Droid ist
+		  fehlerhaft. Bitte benutze eine ältere Version oder die aus dem Play
+		  Store.</div>
 
-    </div>
+		</div>
+	  </section>
 
-    <div class="text">
-
-      <p>Du kannst auch mit deinem <a
-      href="https://wiki.mumble.info/wiki/Mumble_clients">Desktop- oder mobilen
-      Mumble-Client</a> zuhören: verbinde dich mit Servername
-      mumble.c3lingo.org, Port 64738, und gehe in den gewünschten Raum. Mit
-      dem „test"-Channel kannst du deinen Client testen.</p>
-
-      <p>Für die fünf Säle (Ada, Borg, Clarke, Dijkstra and Eliza) haben wir
-      jeweils drei Kanäle eingerichtet. „<i>Saal</i>-0“ ist der Originalton
-      (setze für „<i>Saal</i>“ den Namens des Saals ein, wir haben also
-      „ada-0“, „borg-0“, „clarke-0“, „dijkstra-0“, „eliza-0“). Wähle
-      „<i>Saal</i>-1“ für Englisch oder Deutsch (je nach der Originalsprache,
-      immer verfügbar) und „<i>Saal</i>-2“ für eine weitere Sprache (abhängig
-      von Verfügbarkeit von Übersetzungsengeln und anderen Zufällen – es dürfte
-      Französisch, Spanisch, Mandarin und sogar Schwyzerdütsch zu bestimmten
-      Zeiten geben). Beachte die Ansagen von der Bühne oder versuche auf <a
-      href="https://twitter.com/c3lingo">@c3lingo</a> bei Twitter zu erfahren,
-      welche Sprachen angeboten werden.</p>
-
-      <div class="warning">Die aktuelle Version von Plumble auf F-Droid ist
-      fehlerhaft. Bitte benutze eine ältere Version oder die aus dem Play
-      Store.</div>
-
-    </div>
-
+    </main>
+	<script src="langswitch.js"></script>
   </body>
 </html>
