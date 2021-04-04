@@ -8,6 +8,7 @@ module.exports = {
     ],
     config: './app/config.js',
     fahrplan: './app/fahrplan.js'
+    langswitch: './app/langswitch.js'
   },
   output: {
     filename: '[name].js',
