@@ -66,15 +66,12 @@ main > #halls {
 	width: 18em;
 	margin: 1em;
 
-	/* Compensate button overlap: (#channels)*(1em (text) + 2*.5em (padding) + .2em(border)) */
-	padding-bottom: calc(1 * (1em + 2 * .5em + .2em));
-
 	background-color: #000;
 	overflow: hidden;
 	text-align: left;
-}
 
-#halls > div li {
+	display: flex;
+	flex-direction: column;
 }
 
 #halls img {
@@ -84,6 +81,17 @@ main > #halls {
 
 }
 
+.talkinfo {
+	flex-grow: 1;
+	padding: 0 1em 0.5em;
+}
+
+.talkinfo h4 {
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}
+
 #halls a {
 
 	text-decoration: none;
@@ -91,9 +99,6 @@ main > #halls {
 }
 
 #halls ul {
-
-	position: absolute;
-	bottom: 0;
 
 	width: 100%;
 	margin: 0;
@@ -177,16 +182,6 @@ h2 {
 	background-color: #f77;
 	color: #222;
 
-}
-
-.talkinfo {
-	padding: 0 1em 0.5em;
-}
-
-.talkinfo h4 {
-	margin-top: 0.2em;
-	margin-bottom: 0.2em;
-	font-weight: bold;
 }
 
 body[lang="en"] [data-lang]:not([data-lang="en"]),
