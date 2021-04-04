@@ -1,77 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>c3lingo Live Translation | Stream</title>
-    <meta charset="utf-8">
-    <meta name="theme-color" content="#444">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/dark_c3lingo_square-64.png">
-    <link rel="stylesheet" type="text/css" href="./main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
+	<head>
+		<title>c3lingo Live Translation | Stream</title>
+		<meta charset="utf-8">
+		<meta name="theme-color" content="#444">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/dark_c3lingo_square-64.png">
+		<link rel="stylesheet" type="text/css" href="./main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
 
-    <main>
+		<main>
 
-      <div class="logo"><a href="."><img src="./img/dark_c3lingo_square.png" alt="c3lingo"></a></div>
+			<div class="logo"><a href="."><img src="./img/dark_c3lingo_square.png" alt="c3lingo"></a></div>
 
-	  <div class="greeter">
+			<div class="greeter">
 
-		<div class="text">
-		  <noscript>
-			<h1>Your device seems to have JavaScript disabled</h1>
-			<h2>This makes us sad because we can't deliver our translations :(</h2>
-		  </noscript>
+				<div class="text">
+					<noscript>
+						<h1>Your device seems to have JavaScript disabled</h1>
+						<h2>This makes us sad because we can't deliver our translations :(</h2>
+					</noscript>
 
-		  <script>
-			var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-			if (isSafari)
-			  document.write('<div class="warning">Safari/iOS doesn\'t work yet. Know your way around AudioContext with Safari? <a href="mailto&#58;win&#37;6Be&#108;%73%&#52;0c&#97;m&#112;u&#115;&#46;t%&#55;5-&#37;62&#101;r%6C%69&#37;6&#69;&#46;&#37;&#54;4e">Contact us</a>.</div>')
-		  </script>
+					<script>
+					var splitKey = window.location.href.split('channel=')
+					var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
+					var ch = fullChannel.split('-')
+					var hall = ch[0]
+					var lang = ch[ch.length-1]
+					if (lang == 0)
+						lang = "Speaker"
+					else if (lang == 1)
+						lang = "Translation EN/DE"
+					else if (lang == 2)
+						lang = "Translation 2"
+					document.write('<h1>' + hall + '</h1>')
+					document.write('<h2>' + lang + '</h2>')
+					</script>
 
-		  <script>
-			var splitKey = window.location.href.split('channel=')
-			var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
-			var ch = fullChannel.split('-')
-			var hall = ch[0]
-			var lang = ch[ch.length-1]
-			if (lang == 0)
-			  lang = "Speaker"
-			else if (lang == 1)
-			  lang = "Translation EN/DE"
-			else if (lang == 2)
-			  lang = "Translation 2"
-			document.write('<h1>' + hall + '</h1>')
-			document.write('<h2>' + lang + '</h2>')
-		  </script>
+					<script>
+						var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+						if (isSafari)
+							document.write('<div class="warning">Safari/iOS doesn\'t work (yet). Know your way around AudioContext with Safari? <a href="mailto&#58;win&#37;6Be&#108;%73%&#52;0c&#97;m&#112;u&#115;&#46;t%&#55;5-&#37;62&#101;r%6C%69&#37;6&#69;&#46;&#37;&#54;4e">Contact us</a>.</div>')
+					</script>
 
-		</div>
-	  </div>
+				</div>
+			</div>
 
-	  <div id="controls">
+			<div id="controls">
 
-		<div id="play">
-		  <img src="./img/play.svg" alt="play" title="play" id="playButton">
-		  <h3>Press to start listening</h3>
-		  <b>[Important: Make sure you have your headphones plugged in!]</b>
-		</div>
-		<div id="pause" style="display: none">
-		  <img src="./img/pause.svg" alt="pause" id="pauseButton">
-		  <h3>Press to pause stream</h3>
-		  <b>[Tip: If your connection is poor, try connecting to this domain on a mumble client!]</b>
-		</div>
-		<div id="loading" style="display: none">
-		  <img src="./img/loading.svg" alt="loading">
-		  <h3>Connecting to server</h3>
-		  <b>[(0%): Generating witty loading messages]</b>
-		</div>
+			<div id="play">
+				<img src="./img/play.svg" alt="play" title="play" id="playButton">
+				<h3>Press to start listening</h3>
+				<b>[Important: Make sure you have your headphones plugged in!]</b>
+			</div>
+			<div id="pause" style="display: none">
+				<img src="./img/pause.svg" alt="pause" id="pauseButton">
+				<h3>Press to pause stream</h3>
+				<b>[Tip: If your connection is poor, try connecting to this domain on a mumble client!]</b>
+			</div>
+			<div id="loading" style="display: none">
+				<img src="./img/loading.svg" alt="loading">
+				<h3>Connecting to server</h3>
+				<b>[(0%): Generating witty loading messages]</b>
+			</div>
 
-	  </div>
+			</div>
 
-	  <div class="text"><a id="statsButton" style="display: none">Show/hide stats</a></div>
-	  <div id="stats" style="display: none"></div>
+			<div class="text"><a id="statsButton" style="display: none">Show/hide stats</a></div>
+			<div id="stats" style="display: none"></div>
 
-	  <script src="config.js"></script>
-	  <script src="index.js"></script>
-    </main>
-  </body>
+			<script src="config.js"></script>
+			<script src="index.js"></script>
+		</main>
+	</body>
 </html>

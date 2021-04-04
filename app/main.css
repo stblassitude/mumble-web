@@ -1,16 +1,16 @@
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html, body {
 
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 
-  background-color: #212121;
-  font-family: sans-serif;
-  color: #ccc;
+	background-color: #212121;
+	font-family: sans-serif;
+	color: #ccc;
 
 }
 
@@ -18,60 +18,60 @@ main > div,
 main > section > div,
 main > .greeter > .text,
 main > section > .greeter > .text {
-  max-width: 42em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1em;
+	max-width: 42em;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em;
 }
 
 main > .greeter,
 main > section > .greeter {
-  max-width: unset;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
+	max-width: unset;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
 }
 
 main > #halls {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .logo {
-  padding: 1em;
+	padding: 1em;
 }
 
 .logo img {
-  max-height: 9em;
-  max-width: 90%;
-  margin: 2em 0 1em;
+	max-height: 9em;
+	max-width: 90%;
+	margin: 2em 0 1em;
 
 }
 
 .greeter {
-  width: 100%;
-  padding: 1em;
-  background-color: #111;
+	width: 100%;
+	padding: 1em;
+	background-color: #111;
 }
 
 #halls {
-  padding: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
+	padding: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
 }
 
 #halls > div {
-  position: relative;
-  width: 18em;
-  margin: 1em;
+	position: relative;
+	width: 18em;
+	margin: 1em;
 
-  /* Compensate button overlap: (#channels)*(1em (text) + 2*.5em (padding) + .2em(border)) */
-  padding-bottom: calc(1 * (1em + 2 * .5em + .2em));
+	/* Compensate button overlap: (#channels)*(1em (text) + 2*.5em (padding) + .2em(border)) */
+	padding-bottom: calc(1 * (1em + 2 * .5em + .2em));
 
-  background-color: #000;
-  overflow: hidden;
-  text-align: left;
+	background-color: #000;
+	overflow: hidden;
+	text-align: left;
 }
 
 #halls > div li {
@@ -79,192 +79,192 @@ main > #halls {
 
 #halls img {
 
-  height: 8em;
-  margin: 1em;
+	height: 8em;
+	margin: 1em;
 
 }
 
 #halls a {
 
-  text-decoration: none;
+	text-decoration: none;
 
 }
 
 #halls ul {
 
-  position: absolute;
-  bottom: 0;
+	position: absolute;
+	bottom: 0;
 
-  width: 100%;
-  margin: 0;
-  padding: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 
 }
 
 #halls ul li {
 
-  list-style: none;
+	list-style: none;
 
 }
 
 #halls ul li a {
-  display: block;
-  padding: .5em 1em;
+	display: block;
+	padding: .5em 1em;
 }
 
 #halls ul li a:hover {
-  color: #000;
+	color: #000;
 }
 
 a {
-  color: inherit;
+	color: inherit;
 }
 
 a:hover li, #langswitch a:hover {
-  color: #000;
-  background-color: #f99e01;
+	color: #000;
+	background-color: #f99e01;
 }
 
 #stats {
-  background-color: #14121d;
+	background-color: #14121d;
 }
 
 #controls img {
 
-  display: block;
-  height: 10em;
-  max-width: 42%;
-  margin: 1em 0;
+	display: block;
+	height: 10em;
+	max-width: 42%;
+	margin: 1em 0;
 
-  cursor: pointer;
+	cursor: pointer;
 
 }
 
 #statsButton {
 
-  padding: .4em;
+	padding: .4em;
 
-  background-color: #14121d;
-  cursor: pointer;
+	background-color: #14121d;
+	cursor: pointer;
 
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  margin-bottom: 0;
+	font-weight: normal;
+	margin-bottom: 0;
 }
 
 .text > h1:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 h2 {
-  margin-bottom: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 h1 {
-  font-size: 200%;
+	font-size: 200%;
 }
 
 h2 {
-  font-size: 133%;
+	font-size: 133%;
 }
 
 .warning {
 
-  padding: 1em;
+	padding: 1em;
 
-  background-color: #f77;
-  color: #222;
+	background-color: #f77;
+	color: #222;
 
 }
 
 .talkinfo {
-  padding: 0 1em 0.5em;
+	padding: 0 1em 0.5em;
 }
 
 .talkinfo h4 {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-  font-weight: bold;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	font-weight: bold;
 }
 
 body[lang="en"] [data-lang]:not([data-lang="en"]),
 body[lang="de"] [data-lang]:not([data-lang="de"]) {
-  display: none;
+	display: none;
 }
 
 #langswitch {
-  display: none;
+	display: none;
 }
 
 body[lang] #langswitch {
-  display: block;
+	display: block;
 }
 
 #langswitch a {
-  color: #ff5d42;
-  text-decoration: none;
+	color: #ff5d42;
+	text-decoration: none;
 
-  display: inline-block;
-  padding: 0.1em 0.25em;
-  margin-right: 0.25em;
-  border: 1px solid #ff5d42;
+	display: inline-block;
+	padding: 0.1em 0.25em;
+	margin-right: 0.25em;
+	border: 1px solid #ff5d42;
 }
 
 body[lang="en"] #langswitch a[data-lang="en"],
 body[lang="de"] #langswitch a[data-lang="de"] {
-  background-color:#52397f;
+	background-color:#52397f;
 }
 
 .sep {
-  padding: 0.5em 0;
-  border-bottom: 3px solid #333333;
+	padding: 0.5em 0;
+	border-bottom: 3px solid #333333;
 }
 
 body[lang] .sep {
-  display: none;
+	display: none;
 }
 
 #halls > div:nth-child(4n+1) {
-  outline: 1px solid #6800e7;
-  color: #6800e7;
+	outline: 1px solid #6800e7;
+	color: #6800e7;
 }
 #halls > div:nth-child(4n+2) {
-  outline: 1px solid #05b9ec;
-  color: #05b9ec;
+	outline: 1px solid #05b9ec;
+	color: #05b9ec;
 }
 #halls > div:nth-child(4n+3) {
-  outline: 1px solid #02fae0;
-  color: #02fae0;
+	outline: 1px solid #02fae0;
+	color: #02fae0;
 }
 #halls > div:nth-child(4n+4) {
-  outline: 1px solid #b239ff;
-  color: #b239ff;
+	outline: 1px solid #b239ff;
+	color: #b239ff;
 }
 
 #halls > div:nth-child(4n+1) li a {
-  border-top: 1px solid #6800e7;
+	border-top: 1px solid #6800e7;
 }
 #halls > div:nth-child(4n+2) li a {
-  border-top: 1px solid #05b9ec;
+	border-top: 1px solid #05b9ec;
 }
 #halls > div:nth-child(4n+3) li a {
-  border-top: 1px solid #02fae0;
+	border-top: 1px solid #02fae0;
 }
 #halls > div:nth-child(4n+4) li a {
-  border-top: 1px solid #b239ff;
+	border-top: 1px solid #b239ff;
 }
 
 #halls > div:nth-child(4n+1) li a:hover {
-  background-color: #6800e7;
+	background-color: #6800e7;
 }
 #halls > div:nth-child(4n+2) li a:hover {
-  background-color: #05b9ec;
+	background-color: #05b9ec;
 }
 #halls > div:nth-child(4n+3) li a:hover {
-  background-color: #02fae0;
+	background-color: #02fae0;
 }
 #halls > div:nth-child(4n+4) li a:hover {
-  background-color: #b239ff;
+	background-color: #b239ff;
 }
