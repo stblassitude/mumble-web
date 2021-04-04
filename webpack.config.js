@@ -7,7 +7,7 @@ module.exports = {
       './app/native.html'
     ],
     config: './app/config.js',
-    fahrplan: './app/fahrplan.js'
+    fahrplan: './app/fahrplan.js',
     langswitch: './app/langswitch.js'
   },
   output: {
