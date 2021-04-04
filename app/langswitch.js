@@ -6,7 +6,7 @@ if (isSafari) {
 
 var syslang = navigator.language.split('-')[0]
 
-function switchLang(lang) {
+window.switchLang = function(lang) {
   let body = document.getElementsByTagName('body')[0];
   body.setAttribute('data-lang', lang);
   let langElements = body.querySelectorAll('[data-lang]');

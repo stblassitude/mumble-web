@@ -24,7 +24,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|app\/langswitch\.js)/,
         loader: 'babel-loader',
         query: {
           presets: ['es2015'],
