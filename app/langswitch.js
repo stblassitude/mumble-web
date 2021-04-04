@@ -5,7 +5,7 @@ if (isSafari) {
 }
 */
 
-function switchLang(lang) {
+window.switchLang = function(lang) {
 
 	localStorage.setItem('lang', lang);
 	document.body.lang = lang;
