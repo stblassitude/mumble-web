@@ -6,7 +6,7 @@ function updateUI(room, day, cday, time, title, started) {
 
   const el = C3T_ROOM_MAP[room]
 
-  const status = started ? 'Since ' : 'Starts '
+  const status = started ? 'since ' : 'starts '
 
   const dayInfo = (day != cday) ? `Day ${cday+1}, ` : ''
 
