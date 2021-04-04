@@ -8,7 +8,7 @@ html, body {
   margin: 0;
   padding: 0;
 
-  background: #212121;
+  background-color: #212121;
   font-family: sans-serif;
   color: #ccc;
 
@@ -51,7 +51,7 @@ main > #halls {
 .greeter {
   width: 100%;
   padding: 1em;
-  background: #111111;
+  background-color: #111;
 }
 
 #halls {
@@ -69,7 +69,7 @@ main > #halls {
   /* Compensate button overlap: (#channels)*(1em (text) + 2*.5em (padding) + .2em(border)) */
   padding-bottom: calc(1 * (1em + 2 * .5em + .2em));
 
-  background: #000;
+  background-color: #000;
   overflow: hidden;
   text-align: left;
 }
@@ -104,13 +104,16 @@ main > #halls {
 #halls ul li {
 
   list-style: none;
-  text-align: left;
 
 }
 
 #halls ul li a {
   display: block;
   padding: .5em 1em;
+}
+
+#halls ul li a:hover {
+  color: #000;
 }
 
 a {
@@ -123,7 +126,7 @@ a:hover li, #langswitch a:hover {
 }
 
 #stats {
-  background: #14121d;
+  background-color: #14121d;
 }
 
 #controls img {
@@ -141,7 +144,7 @@ a:hover li, #langswitch a:hover {
 
   padding: .4em;
 
-  background: #14121d;
+  background-color: #14121d;
   cursor: pointer;
 
 }
@@ -171,7 +174,7 @@ h2 {
 
   padding: 1em;
 
-  background: #f77;
+  background-color: #f77;
   color: #222;
 
 }
@@ -225,17 +228,46 @@ body[data-lang] *[data-lang].current {
   display: block;
 }
 
-#halls > div:nth-child(4n+1) {outline: 1px solid #6800E7; color: #6800E7;}
-#halls > div:nth-child(4n+2) {outline: 1px solid #05B9EC; color: #05B9EC;}
-#halls > div:nth-child(4n+3) {outline: 1px solid #02FAE0; color: #02FAE0;}
-#halls > div:nth-child(4n+4) {outline: 1px solid #B239FF; color: #B239FF;}
+#halls > div:nth-child(4n+1) {
+  outline: 1px solid #6800e7;
+  color: #6800e7;
+}
+#halls > div:nth-child(4n+2) {
+  outline: 1px solid #05b9ec;
+  color: #05b9ec;
+}
+#halls > div:nth-child(4n+3) {
+  outline: 1px solid #02fae0;
+  color: #02fae0;
+}
+#halls > div:nth-child(4n+4) {
+  outline: 1px solid #b239ff;
+  color: #b239ff;
+}
 
-#halls > div:nth-child(4n+1) li a {border-top: 1px solid #6800E7;}
-#halls > div:nth-child(4n+2) li a {border-top: 1px solid #05B9EC;}
-#halls > div:nth-child(4n+3) li a {border-top: 1px solid #02FAE0;}
-#halls > div:nth-child(4n+4) li a {border-top: 1px solid #B239FF;}
+#halls > div:nth-child(4n+1) li a {
+  border-top: 1px solid #6800e7;
+}
+#halls > div:nth-child(4n+2) li a {
+  border-top: 1px solid #05b9ec;
+}
+#halls > div:nth-child(4n+3) li a {
+  border-top: 1px solid #02fae0;
+}
+#halls > div:nth-child(4n+4) li a {
+  border-top: 1px solid #b239ff;
+}
 
-#halls > div:nth-child(4n+1) li a:hover {background: #6800E7;}
-#halls > div:nth-child(4n+2) li a:hover {background: #05B9EC;}
-#halls > div:nth-child(4n+3) li a:hover {background: #02FAE0;}
-#halls > div:nth-child(4n+4) li a:hover {background: #B239FF;}
+#halls > div:nth-child(4n+1) li a:hover {
+  background-color: #6800e7;
+}
+#halls > div:nth-child(4n+2) li a:hover {
+  background-color: #05b9ec;
+}
+#halls > div:nth-child(4n+3) li a:hover {
+  background-color: #02fae0;
+}
+#halls > div:nth-child(4n+4) li a:hover {
+  background-color: #b239ff;
+}
+
