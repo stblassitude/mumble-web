@@ -86,19 +86,27 @@ class GlobalBindings {
 					switch (type) {
 						case 1:
 							alertText += '(incompatible version)';
+							break;
 						case 2:
 							alertText += '(username rejected)';
+							break;
 						case 3:
+							break;
 						case 4:
 							alertText += '(password incorrect)';
+							break;
 						case 5:
 							alertText += '(username in use)';
+							break;
 						case 6:
 							alertText += '(server full)';
+							break;
 						case 7:
 							alertText += '(certificate required)';
+							break;
 						default:
 							alertText += '(connection refused)';
+							break;
 					}
 
 					alertText += '\n';
