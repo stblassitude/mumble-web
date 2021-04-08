@@ -32,3 +32,4 @@ ENV MUMBLE_SERVER=mumble.c3lingo.org:64738
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD websockify --ssl-target --web /home/node/dist 8080 "$MUMBLE_SERVER"
+# .
