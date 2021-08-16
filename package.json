@@ -1,16 +1,16 @@
 {
   "name": "mumble-web",
   "version": "0.5.1",
-  "description": "An HTML5 Mumble client.",
+  "description": "The c3lingo version of Johni0702's HTML5 Mumble client.",
   "scripts": {
     "build": "webpack",
     "prepublish": "rm -rf dist && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jonas Herzig <me@johni0702.de>",
+  "author": "Oskar <c3lingo@oskar.lol>, Jonas Herzig <me@johni0702.de>",
   "license": "ISC",
-  "repository": "johni0702/mumble-web",
-  "homepage": "https://github.com/johni0702/mumble-web",
+  "repository": "c3lingo/mumble-web",
+  "homepage": "https://github.com/c3lingo/mumble-web",
   "files": [
     "dist"
   ],
