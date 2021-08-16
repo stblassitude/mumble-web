@@ -34,8 +34,8 @@
 						lang = "Translation EN/DE"
 					else if (lang == 2)
 						lang = "Translation 2"
-					document.write('<h1>' + hall + '</h1>')
-					document.write('<h2>' + lang + '</h2>')
+					document.write('<h1>' + decodeURIComponent(hall) + '</h1>')
+					document.write('<h2>' + decodeURIComponent(lang) + '</h2>')
 					</script>
 
 					<script>
@@ -49,25 +49,27 @@
 
 			<div id="controls">
 
-			<div id="play">
-				<img src="./img/play.svg" alt="play" title="play" id="playButton">
-				<h3>Press to start listening</h3>
-				<b>[Important: Make sure you have your headphones plugged in!]</b>
-			</div>
-			<div id="pause" style="display: none">
-				<img src="./img/pause.svg" alt="pause" id="pauseButton">
-				<h3>Press to pause stream</h3>
-				<b>[Tip: If your connection is poor, try connecting to this domain on a mumble client!]</b>
-			</div>
-			<div id="loading" style="display: none">
-				<img src="./img/loading.svg" alt="loading">
-				<h3>Connecting to server</h3>
-				<b>[(0%): Generating witty loading messages]</b>
-			</div>
+				<div id="play">
+					<img src="./img/play.svg" alt="play" title="play" id="playButton">
+					<h3>Press to start listening</h3>
+					<b>[Important: Make sure you have your headphones plugged in!]</b>
+				</div>
+				<div id="pause" style="display: none">
+					<img src="./img/pause.svg" alt="pause" id="pauseButton">
+					<h3>Press to pause stream</h3>
+					<b>[Tip: If your connection is poor, try connecting to this domain on a mumble client!]</b>
+				</div>
+				<div id="loading" style="display: none">
+					<img src="./img/loading.svg" alt="loading">
+					<h3>Connecting to server</h3>
+					<b>[(0%): Generating witty loading messages]</b>
+				</div>
 
 			</div>
 
-			<div class="text"><a id="statsButton" style="display: none">Show/hide stats</a></div>
+			<div class="text" id="statsWrapper">
+				<a id="statsButton" style="display: none">Show/hide stats</a>
+			</div>
 			<div id="stats" style="display: none"></div>
 
 			<script src="config.js"></script>
