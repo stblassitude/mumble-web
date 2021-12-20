@@ -25,15 +25,13 @@
 					<script>
 					var splitKey = window.location.href.split('channel=')
 					var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
-					var ch = fullChannel.split('-')
-					var hall = ch[0]
-					var lang = ch[ch.length-1]
-					if (lang == 0)
-						lang = "Speaker"
-					else if (lang == 1)
-						lang = "Translation EN/DE"
-					else if (lang == 2)
-						lang = "Translation 2"
+					var path = fullChannel.split('/')
+					var hall = path[0]
+					var lang = path[path.length-1]
+					lang = {
+						'english-german': 'English/German',
+						'third-language': 'Other Language',
+					}[lang] || lang
 					document.write('<h1>' + decodeURIComponent(hall) + '</h1>')
 					document.write('<h2>' + decodeURIComponent(lang) + '</h2>')
 					</script>

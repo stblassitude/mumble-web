@@ -43,15 +43,18 @@ class GlobalBindings {
 				});
 
 				// Register all channels, recursively
+        // Find first channel path that ends with desired channel(s), separated by slash
 				var initialChannel = undefined;
-				const registerChannel = channel => {
-					if (channel.name == initialChannelName) {
+				const registerChannel = (channel, path) => {
+          path += '/' + channel.name;
+          //console.log('TESTING CHANNEL', path);
+					if (path.endsWith(initialChannelName)) {
 						initialChannel = channel;
 						return;
 					}
-					channel.children.forEach(registerChannel);
+					channel.children.forEach(c => registerChannel(c, path));
 				}
-				registerChannel(client.root);
+				registerChannel(client.root, '');
 
 				// Register all users
 				client.users.forEach(user => this._newUser(user));
