@@ -63,7 +63,7 @@ main > #halls {
 
 #halls > div {
 	position: relative;
-	width: 18em;
+	width: 12em;
 	margin: 1em;
 
 	background-color: #000;
@@ -239,44 +239,44 @@ body[lang] .sep {
 }
 
 #halls > div:nth-child(4n+1) {
-	outline: 1px solid #FF5D42;
-	color: #FF5D42;
+	outline: 1px solid #B239FF;
+	color: #B239FF;
 }
 #halls > div:nth-child(4n+2) {
-	outline: 1px solid #FF8628;
-	color: #FF8628;
+	outline: 1px solid #835CFF;
+	color: #835CFF;
 }
 #halls > div:nth-child(4n+3) {
-	outline: 1px solid #F99E01;
-	color: #F99E01;
+	outline: 1px solid #05B9EC;
+	color: #05B9EC;
 }
 #halls > div:nth-child(4n+4) {
-	outline: 1px solid #6846A9;
-	color: #6846A9;
+	outline: 1px solid #02FAE0;
+	color: #02FAE0;
 }
 
 #halls > div:nth-child(4n+1) li a {
-	border-top: 1px solid #FF5D42;
+	border-top: 1px solid #B239FF;
 }
 #halls > div:nth-child(4n+2) li a {
-	border-top: 1px solid #FF8628;
+	border-top: 1px solid #835CFF;
 }
 #halls > div:nth-child(4n+3) li a {
-	border-top: 1px solid #F99E01;
+	border-top: 1px solid #05B9EC;
 }
 #halls > div:nth-child(4n+4) li a {
-	border-top: 1px solid #6846A9;
+	border-top: 1px solid #02FAE0;
 }
 
 #halls > div:nth-child(4n+1) li a:hover {
-	background-color: #FF5D42;
+	background-color: #B239FF;
 }
 #halls > div:nth-child(4n+2) li a:hover {
-	background-color: #FF8628;
+	background-color: #835CFF;
 }
 #halls > div:nth-child(4n+3) li a:hover {
-	background-color: #F99E01;
+	background-color: #05B9EC;
 }
 #halls > div:nth-child(4n+4) li a:hover {
-	background-color: #6846A9;
+	background-color: #02FAE0;
 }
