@@ -238,19 +238,19 @@ body[lang] .sep {
 	display: none;
 }
 
-#halls > div:nth-child(5n+1) {
+#halls > div:nth-child(4n+1) {
 	outline: 1px solid #FF5D42;
 	color: #FF5D42;
 }
-#halls > div:nth-child(5n+2) {
+#halls > div:nth-child(4n+2) {
 	outline: 1px solid #FF8628;
 	color: #FF8628;
 }
-#halls > div:nth-child(5n+3) {
+#halls > div:nth-child(4n+3) {
 	outline: 1px solid #F99E01;
 	color: #F99E01;
 }
-#halls > div:nth-child(5n+4) {
+#halls > div:nth-child(4n+4) {
 	outline: 1px solid #6846A9;
 	color: #6846A9;
 }
