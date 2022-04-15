@@ -26,13 +26,14 @@
 					var splitKey = window.location.href.split('channel=')
 					var fullChannel = splitKey.length > 1 ? splitKey[1].split('&')[0] : '[No channel]'
 					var path = fullChannel.split('/')
-					var hall = path[0]
+					var room = path[0]
 					var lang = path[path.length-1]
 					lang = {
-						'english-german': 'English/German',
-						'third-language': 'Other Language',
+						'english-german':  'English–German',
+						'third-language':  'Other Language',
+						'translation':     'English–German',
 					}[lang] || lang
-					document.write('<h1>' + decodeURIComponent(hall) + '</h1>')
+					document.write('<h1>' + decodeURIComponent(room) + '</h1>')
 					document.write('<h2>' + decodeURIComponent(lang) + '</h2>')
 					</script>
 
