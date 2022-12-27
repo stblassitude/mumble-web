@@ -74,12 +74,14 @@ main > #halls {
 	flex-direction: column;
 }
 
+/*
 #halls img {
 
 	height: 8em;
 	margin: 1em;
 
 }
+*/
 
 .talkinfo {
 	flex-grow: 1;
