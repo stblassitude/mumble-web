@@ -1,5 +1,5 @@
 var C3T_ROOM_MAP = {
-	'Piscopia': document.querySelector('#piscopia .talkinfo'),
+	'Fireshonks-Stream': document.querySelector('#fireshonks .talkinfo'),
 }
 
 function updateUI(room, day, cday, time, title, started) {
