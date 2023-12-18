@@ -85,7 +85,7 @@ main > #halls {
 
 .talkinfo {
 	flex-grow: 1;
-	padding: 0 1em 0.5em;
+	padding: 0.5em 1em;
 }
 
 .talkinfo h4 {
@@ -240,45 +240,18 @@ body[lang] .sep {
 	display: none;
 }
 
-#halls > div:nth-child(4n+1) {
-	outline: 1px solid #B239FF;
-	color: #B239FF;
-}
-#halls > div:nth-child(4n+2) {
-	outline: 1px solid #835CFF;
-	color: #835CFF;
-}
-#halls > div:nth-child(4n+3) {
-	outline: 1px solid #05B9EC;
-	color: #05B9EC;
-}
-#halls > div:nth-child(4n+4) {
-	outline: 1px solid #02FAE0;
-	color: #02FAE0;
-}
+#halls > div:nth-child(3n+1) { outline: 1px solid #29ffff; color: #29ffff; }
+#halls > div:nth-child(3n+2) { outline: 1px solid #de4040; color: #de4040; }
+#halls > div:nth-child(3n+3) { outline: 1px solid #f6f675; color: #f6f675; }
 
-#halls > div:nth-child(4n+1) li a {
-	border-top: 1px solid #B239FF;
-}
-#halls > div:nth-child(4n+2) li a {
-	border-top: 1px solid #835CFF;
-}
-#halls > div:nth-child(4n+3) li a {
-	border-top: 1px solid #05B9EC;
-}
-#halls > div:nth-child(4n+4) li a {
-	border-top: 1px solid #02FAE0;
-}
+#halls > div:nth-child(3n+1) img { border-bottom: 1px solid #29ffff; }
+#halls > div:nth-child(3n+2) img { border-bottom: 1px solid #de4040; }
+#halls > div:nth-child(3n+3) img { border-bottom: 1px solid #f6f675; }
 
-#halls > div:nth-child(4n+1) li a:hover {
-	background-color: #B239FF;
-}
-#halls > div:nth-child(4n+2) li a:hover {
-	background-color: #835CFF;
-}
-#halls > div:nth-child(4n+3) li a:hover {
-	background-color: #05B9EC;
-}
-#halls > div:nth-child(4n+4) li a:hover {
-	background-color: #02FAE0;
-}
+#halls > div:nth-child(3n+1) li a { border-top: 1px solid #29ffff; }
+#halls > div:nth-child(3n+2) li a { border-top: 1px solid #de4040; }
+#halls > div:nth-child(3n+3) li a { border-top: 1px solid #f6f675; }
+
+#halls > div:nth-child(3n+1) li a:hover { background-color: #29ffff; }
+#halls > div:nth-child(3n+2) li a:hover { background-color: #de4040; }
+#halls > div:nth-child(3n+3) li a:hover { background-color: #f6f675; }

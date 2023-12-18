@@ -1,5 +1,7 @@
 var C3T_ROOM_MAP = {
-	'Fireshonks-Stream': document.querySelector('#fireshonks .talkinfo'),
+	'Saal 1': document.querySelector('#Saal_1 .talkinfo'),
+	'Saal Grace': document.querySelector('#Saal_Grace .talkinfo'),
+	'Saal Zuse': document.querySelector('#Saal_Zuse .talkinfo'),
 }
 
 function updateUI(room, day, cday, time, title, started) {
