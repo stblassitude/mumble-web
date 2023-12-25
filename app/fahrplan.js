@@ -1,6 +1,6 @@
 var C3T_ROOM_MAP = {
 	'Saal 1': document.querySelector('#Saal_1 .talkinfo'),
-	'Saal Grace': document.querySelector('#Saal_Grace .talkinfo'),
+	'Saal Granville': document.querySelector('#Saal_Granville .talkinfo'),
 	'Saal Zuse': document.querySelector('#Saal_Zuse .talkinfo'),
 }
 
